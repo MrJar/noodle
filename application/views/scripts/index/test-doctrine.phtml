@@ -1,0 +1,12 @@
+<p><?= ("Echo Test"); ?></p>
+
+<p><?php echo("Echo Test 2"); ?></p>
+
+<p>Doctrine Test(Powinienes widziec cos poza "Koniec Testu" i nie żadnych wiedzieć błedów): </p>
+
+<?php foreach ($this->test as $value) : ?>
+<span><?= $value->id; ?></span>
+<span><?= $value->dane; ?></span><br />
+<?php endforeach; ?>
+
+<p>Koniec Testu jak coś widzisz to gratulacje masz poprawnie skonfigurowany dostęp do bazy w Doctrinie</p>
