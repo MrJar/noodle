@@ -6,3 +6,5 @@ Przydatne rzeczy:
 
 Format wiadomości w gicie:
 - #[Nr zadania] - [Treść zadania]
+
+https://pe.ug.edu.pl/mdl/course/view.php?id=1653
