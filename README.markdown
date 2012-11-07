@@ -1,1 +1,8 @@
-Taki tam projekt
+Przydatne rzeczy:
+
+- http://sigma.ug.edu.pl/~jszewczak/zend/
+- trzeba by mieć wampa, xampa czy cos takiego(mysql, apache)
+- github ogarnięcie git-a pull, push, commit
+
+Format wiadomości w gicie:
+- #[Nr zadania] - [Treść zadania]
