@@ -1,0 +1,14 @@
+Role:
+- admin
+- uczen
+- nauczyciel
+
+stuff:
+- sprawdzian - zadania - rozne rodzaje - api
+- kurs - abałt - tematy - zadania - kalendarz
+- punkty - oceny
+- logowanie - rola
+- mini forum - posty
+- [abałt] - o portalu,
+- szukajka
+
