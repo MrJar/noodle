@@ -13,7 +13,4 @@ stuff:
 - szukajka
 - ochrona - blokowanie ip, powiadomienia
 - profil - email - data logowania,ostatniego,pierwszego
-<<<<<<< HEAD
-=======
 - tworzenie kopii zapasowej
->>>>>>> b85bfa5329d0d48b3572aa88cbd1cc6dbbdd4242
