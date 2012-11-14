@@ -12,3 +12,5 @@ stuff:
 - [abałt] - o portalu,
 - szukajka
 
+-- diagramy UML - StarUML
+
