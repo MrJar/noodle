@@ -4,13 +4,12 @@ Role:
 - nauczyciel
 
 stuff:
-- sprawdzian - zadania - rozne rodzaje - api
+- sprawdzian - zadania - kategorie - api
 - kurs - abałt - tematy - zadania - kalendarz
 - punkty - oceny
 - logowanie - rola
 - mini forum - posty
 - [abałt] - o portalu,
 - szukajka
-
-- diagramy UML - StarUML
-
+- ochrona - blokowanie ip, powiadomienia
+- profil - email - data logowania,ostatniego,pierwszego
