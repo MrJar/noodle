@@ -11,3 +11,5 @@ https://pe.ug.edu.pl/mdl/course/view.php?id=1653
 
 IDE korego ja uzywam w wersji 7.2
 http://netbeans.org/downloads/
+
+paralele
