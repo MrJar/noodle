@@ -13,4 +13,4 @@ stuff:
 - szukajka
 - ochrona - blokowanie ip, powiadomienia
 - profil - email - data logowania,ostatniego,pierwszego
-- test rdddvxcxcvxcv
+- tworzenie kopii zapasowej
