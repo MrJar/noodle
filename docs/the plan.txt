@@ -14,3 +14,4 @@ stuff:
 - ochrona - blokowanie ip, powiadomienia
 - profil - email - data logowania,ostatniego,pierwszego
 - tworzenie kopii zapasowej
+- nowy test
