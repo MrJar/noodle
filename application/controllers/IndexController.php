@@ -19,5 +19,8 @@ class IndexController extends Zend_Controller_Action
         $test = $testTable->findAll();
         $this->view->test = $test;
     }
+ 
+ 
+
 }
 
