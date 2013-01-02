@@ -383,10 +383,11 @@ img {
 /* Sidebar */
 
 #sidebar {
-	float: right;
-	width: 240px;
 	
-	padding: 0 380px 0 0;
+	width: 240px;
+	float:right;
+	padding: 0 0 0 0;
+        
 }
 
 #sidebar ul {
