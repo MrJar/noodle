@@ -2,7 +2,7 @@
 
 class IndexController extends Noodle_Controller_Action
 {
-
+    
     public function init()
     {
         parent::init();
@@ -12,7 +12,7 @@ class IndexController extends Noodle_Controller_Action
     {
         // action body
     }
-
+   
     public function testDoctrineAction()
     {
         $testTable = Application_Model_TestTable::getInstance();
