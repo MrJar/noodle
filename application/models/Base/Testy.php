@@ -12,7 +12,8 @@ Doctrine_Manager::getInstance()->bindComponent('Application_Model_Testy', 'doctr
  * @property string $idPrzedmioty
  * @property string $data od
  * @property string $data do
- * @property Doctrine_Collection $Przedmioty
+ * @property integer $Przedmioty_idPrzedmioty
+ * @property Application_Model_Przedmioty $Przedmioty
  * @property Doctrine_Collection $Testy_Sprawdzone
  * @property Doctrine_Collection $TestyHas_Zadania
  * @property Doctrine_Collection $UzytkownicyHas_Testy
@@ -71,14 +72,23 @@ abstract class Application_Model_Base_Testy extends Doctrine_Record
              'notnull' => false,
              'autoincrement' => false,
              ));
+        $this->hasColumn('Przedmioty_idPrzedmioty', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => 4,
+             'fixed' => false,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             ));
     }
 
     public function setUp()
     {
         parent::setUp();
-        $this->hasMany('Application_Model_Przedmioty as Przedmioty', array(
-             'local' => 'idTesty',
-             'foreign' => 'Testy_idTesty'));
+        $this->hasOne('Application_Model_Przedmioty as Przedmioty', array(
+             'local' => 'Przedmioty_idPrzedmioty',
+             'foreign' => 'idPrzedmioty'));
 
         $this->hasMany('Application_Model_Testy_Sprawdzone as Testy_Sprawdzone', array(
              'local' => 'idTesty',

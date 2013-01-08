@@ -13,8 +13,8 @@ Doctrine_Manager::getInstance()->bindComponent('Application_Model_RozwiazanieZad
  * @property string $zdobyte_pkt
  * @property integer $Uzytkownicy_idUzytkownicy
  * @property integer $Testy_Sprawdzone_idTesty_Sprawdzone
- * @property Application_Model_Testy_Sprawdzone $Testy_Sprawdzone
  * @property Application_Model_Uzytkownicy $Uzytkownicy
+ * @property Application_Model_Testy_Sprawdzone $Testy_Sprawdzone
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -32,7 +32,7 @@ abstract class Application_Model_Base_RozwiazanieZadania extends Doctrine_Record
              'fixed' => false,
              'unsigned' => false,
              'primary' => true,
-             'autoincrement' => false,
+             'autoincrement' => true,
              ));
         $this->hasColumn('idU?ytkownicy', 'integer', 4, array(
              'type' => 'integer',
@@ -83,12 +83,12 @@ abstract class Application_Model_Base_RozwiazanieZadania extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Application_Model_Testy_Sprawdzone as Testy_Sprawdzone', array(
-             'local' => 'Testy_Sprawdzone_idTesty_Sprawdzone',
-             'foreign' => 'idTesty_Sprawdzone'));
-
         $this->hasOne('Application_Model_Uzytkownicy as Uzytkownicy', array(
              'local' => 'Uzytkownicy_idUzytkownicy',
              'foreign' => 'idUzytkownicy'));
+
+        $this->hasOne('Application_Model_Testy_Sprawdzone as Testy_Sprawdzone', array(
+             'local' => 'Testy_Sprawdzone_idTesty_Sprawdzone',
+             'foreign' => 'idTesty_Sprawdzone'));
     }
 }
