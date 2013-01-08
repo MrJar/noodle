@@ -79,7 +79,7 @@ abstract class Application_Model_Base_Uzytkownicy extends Doctrine_Record
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
-             'notnull' => true,
+             'notnull' => false,
              'autoincrement' => false,
              ));
     }
