@@ -33,7 +33,7 @@ abstract class Application_Model_Base_Przedmioty extends Doctrine_Record
              'fixed' => false,
              'unsigned' => false,
              'primary' => true,
-             'autoincrement' => false,
+             'autoincrement' => true,
              ));
         $this->hasColumn('nazwa', 'string', 45, array(
              'type' => 'string',

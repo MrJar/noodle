@@ -38,7 +38,7 @@ abstract class Application_Model_Base_Zadania extends Doctrine_Record
              'fixed' => false,
              'unsigned' => false,
              'primary' => true,
-             'autoincrement' => false,
+             'autoincrement' => true,
              ));
         $this->hasColumn('typ', 'string', 45, array(
              'type' => 'string',
