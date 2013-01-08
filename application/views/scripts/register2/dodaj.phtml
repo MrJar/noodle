@@ -1,4 +1,7 @@
 
+
+
+
 <link rel="stylesheet" type="text/css" media="screen"
       href="<?php echo $this->baseUrl; ?>/css/default.css" /> 
 
@@ -8,22 +11,20 @@
 
     <div class="post">
         <div class="title">
-            <h2>Witamy na stronie głównej</h2>
+            <h2>Zalogowany użytkownik</h2>
 
         </div>
+        <br/>
+        <br/>
+        <br/>
+
+        Rejestracja zakończyła się pomyślnie.
+        <br/>
+        <br/>
+        <br/>
+        <br/>
 
 
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <p>Noodle zawiera kursy e-learningowe stworzone przez nauczycieli.</p>
-
-        <p>Aby móc w pełni korzystać z zasobów Noodle, musisz się zalogować.</p>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
 
 
     </div>
@@ -38,7 +39,14 @@
         <li id="categories">
             <h2>Twoje konto</h2>
             <ul>
-                <li><a href="/login/login">Zaloguj się</a> </li>
+                <li><a href="<?php echo $this->url(array('controller' => 'login', 'action' => 'logout')) ?>">Wyloguj się</a></li>
+
+
+
+
+
+
+
 
             </ul>
         </li>
@@ -119,5 +127,14 @@
     </ul>
 </div>
 <!-- end sidebar -->
+
+
+
+
+
+
+
+
+
 
 
