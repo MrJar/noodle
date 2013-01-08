@@ -34,7 +34,7 @@ abstract class Application_Model_Base_Uzytkownicy extends Doctrine_Record
              'fixed' => false,
              'unsigned' => false,
              'primary' => true,
-             'autoincrement' => false,
+             'autoincrement' => true,
              ));
         $this->hasColumn('login', 'string', 45, array(
              'type' => 'string',
