@@ -16,6 +16,7 @@ Doctrine_Manager::getInstance()->bindComponent('Application_Model_Uzytkownicy', 
  * @property Application_Model_Grupy $Grupy
  * @property Doctrine_Collection $RozwiazanieZadania
  * @property Doctrine_Collection $Testy_Sprawdzone
+ * @property Doctrine_Collection $UzytkownicyHas_Przedmioty
  * @property Doctrine_Collection $UzytkownicyHas_Testy
  * 
  * @package    ##PACKAGE##
@@ -95,6 +96,10 @@ abstract class Application_Model_Base_Uzytkownicy extends Doctrine_Record
              'foreign' => 'Uzytkownicy_idUzytkownicy'));
 
         $this->hasMany('Application_Model_Testy_Sprawdzone as Testy_Sprawdzone', array(
+             'local' => 'idUzytkownicy',
+             'foreign' => 'Uzytkownicy_idUzytkownicy'));
+
+        $this->hasMany('Application_Model_UzytkownicyHas_Przedmioty as UzytkownicyHas_Przedmioty', array(
              'local' => 'idUzytkownicy',
              'foreign' => 'Uzytkownicy_idUzytkownicy'));
 

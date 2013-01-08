@@ -17,9 +17,7 @@ Doctrine_Manager::getInstance()->bindComponent('Application_Model_Zadania', 'doc
  * @property integer $punkty
  * @property integer $poziomtrudno?ci
  * @property integer $Przedmioty_idPrzedmioty1
- * @property integer $Przedmioty_Uzytkownicy_idUzytkownicy
  * @property Application_Model_Przedmioty $Przedmioty
- * @property Application_Model_Przedmioty $Przedmioty_2
  * @property Doctrine_Collection $TestyHas_Zadania
  * 
  * @package    ##PACKAGE##
@@ -121,15 +119,6 @@ abstract class Application_Model_Base_Zadania extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('Przedmioty_Uzytkownicy_idUzytkownicy', 'integer', 4, array(
-             'type' => 'integer',
-             'length' => 4,
-             'fixed' => false,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => true,
-             'autoincrement' => false,
-             ));
     }
 
     public function setUp()
@@ -138,10 +127,6 @@ abstract class Application_Model_Base_Zadania extends Doctrine_Record
         $this->hasOne('Application_Model_Przedmioty as Przedmioty', array(
              'local' => 'Przedmioty_idPrzedmioty1',
              'foreign' => 'idPrzedmioty'));
-
-        $this->hasOne('Application_Model_Przedmioty as Przedmioty_2', array(
-             'local' => 'Przedmioty_Uzytkownicy_idUzytkownicy',
-             'foreign' => 'Uzytkownicy_idUzytkownicy'));
 
         $this->hasMany('Application_Model_TestyHas_Zadania as TestyHas_Zadania', array(
              'local' => 'idZadania',

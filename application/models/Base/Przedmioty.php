@@ -11,11 +11,10 @@ Doctrine_Manager::getInstance()->bindComponent('Application_Model_Przedmioty', '
  * @property string $nazwa
  * @property string $kierunek
  * @property string $grupa
- * @property integer $Uzytkownicy_idUzytkownicy
  * @property integer $Testy_idTesty
  * @property Application_Model_Testy $Testy
+ * @property Doctrine_Collection $UzytkownicyHas_Przedmioty
  * @property Doctrine_Collection $Zadania
- * @property Doctrine_Collection $Zadania_2
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -62,14 +61,6 @@ abstract class Application_Model_Base_Przedmioty extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('Uzytkownicy_idUzytkownicy', 'integer', 4, array(
-             'type' => 'integer',
-             'length' => 4,
-             'fixed' => false,
-             'unsigned' => false,
-             'primary' => true,
-             'autoincrement' => false,
-             ));
         $this->hasColumn('Testy_idTesty', 'integer', 4, array(
              'type' => 'integer',
              'length' => 4,
@@ -88,12 +79,12 @@ abstract class Application_Model_Base_Przedmioty extends Doctrine_Record
              'local' => 'Testy_idTesty',
              'foreign' => 'idTesty'));
 
+        $this->hasMany('Application_Model_UzytkownicyHas_Przedmioty as UzytkownicyHas_Przedmioty', array(
+             'local' => 'idPrzedmioty',
+             'foreign' => 'Przedmioty_idPrzedmioty'));
+
         $this->hasMany('Application_Model_Zadania as Zadania', array(
              'local' => 'idPrzedmioty',
              'foreign' => 'Przedmioty_idPrzedmioty1'));
-
-        $this->hasMany('Application_Model_Zadania as Zadania_2', array(
-             'local' => 'Uzytkownicy_idUzytkownicy',
-             'foreign' => 'Przedmioty_Uzytkownicy_idUzytkownicy'));
     }
 }
