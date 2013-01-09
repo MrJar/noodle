@@ -5,7 +5,7 @@ class Application_Form_Register2 extends Zend_Form {
     public function init() {
         /* Form Elements & Other Definitions Here ... */
 
-        $this->setAction('/register2/dodaj')->setMethod('post');
+        $this->setAction('/register/dodaj')->setMethod('post');
 
         $this->addElement(new Zend_Form_Element_Text('login',
                         array(
