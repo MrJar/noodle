@@ -15,4 +15,13 @@ http://netbeans.org/downloads/
 UML :
  - StarUML - http://staruml.sourceforge.net/en/download.php
 
+
+Diagram EER :
+ - MySQL Workbench 5.2 CE - http://dev.mysql.com/downloads/workbench/
+
+Miejsca do ogarniecia z podstaw Zend-a.
+http://framework.zend.com/manual/1.12/en/learning.quickstart.html
+http://phpdev.ro/zf-tutorial-series-part-1-module-based-app.html
+http://akrabat.com/zend-framework-tutorial/
+
 paralele
