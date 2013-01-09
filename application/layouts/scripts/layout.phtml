@@ -78,6 +78,12 @@ Description: Three-column blog design with the third column allocated for ads. F
                     }
                 }
                 ?>
+                
+                    <?php else:
+                    
+                    echo '<li><a href="' . $this->url(array('controller' => 'login', 'action' => 'login')) . '">Logowanie</a></li>';
+                
+                    ?>
                 <?php endif; ?>
             </ul>
         </li>
