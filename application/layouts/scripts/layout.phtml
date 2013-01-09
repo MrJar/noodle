@@ -59,26 +59,26 @@ Description: Three-column blog design with the third column allocated for ads. F
         <li id="categories">
             <h2>Twoje konto</h2>
             <ul>
-                <li><a href="<?php echo $this->url(array('controller' => 'login', 'action' => 'logout')) ?>">Wyloguj się</a></li>
+                <?php $hasIdentity = Zend_Auth::getInstance()->hasIdentity(); ?>
+                <?php if ($hasIdentity) : ?>
+                <li><a href="<?= $this->url(array('controller' => 'login', 'action' => 'logout')) ?>">Wyloguj się</a></li>
                 <?php
-                $auth = Zend_Auth::getInstance();
-                $test = $auth->getStorage()->read();
+                $auth = Zend_Auth::getInstance()->getStorage()->read();
+                
+                if ($auth['rola'] != 1) {
 
-                if ($test['rola'] != 1) {
-
-                    if ($test['rola'] == 2) {
+                    if ($auth['rola'] == 2) {
 
                         echo '<li><a href="' . $this->url(array('controller' => 'register2', 'action' => 'index')) . '">Rejestracja</a></li>';
                     }
 
-
-                    if ($test['rola'] == 3) {
+                    if ($auth['rola'] == 3) {
 
                         echo '<li><a href="' . $this->url(array('controller' => 'register', 'action' => 'index')) . '">Rejestracja</a></li>';
                     }
                 }
                 ?>
-
+                <?php endif; ?>
             </ul>
         </li>
         <li id="calendar">
