@@ -9,13 +9,18 @@ class RegisterController extends Zend_Controller_Action {
     public function indexAction() {
         // action body
 
-        $auth = Zend_Auth::getInstance();
-        $test = $auth->getStorage()->read();
+        $auth = Zend_Auth::getInstance()->getStorage()->read();
 
-        if ($test['rola'] == 3) {
+        switch ($auth['rola']) {
+            case Application_Model_Uzytkownicy::ROLE_ADMIN:
 
+                $this->view->form = new Application_Form_Register();
+                break;
 
-            $this->view->form = new Application_Form_Register();
+            case Application_Model_Uzytkownicy::ROLE_LECTURER:
+
+                $this->view->form = new Application_Form_Register2();
+                break;
         }
     }
 
@@ -23,9 +28,6 @@ class RegisterController extends Zend_Controller_Action {
 
 
         $params = $this->_getAllParams();
-        //$form = new Application_Form_Register();
-        //$form2 = new Application_Form_Register2();
-
         $uzytkownik = new Application_Model_Uzytkownicy();
         $uzytkownik->login = $params['login'];
         $uzytkownik->haslo = sha1($params['haslo']);
