@@ -35,9 +35,6 @@ class LoginController extends Noodle_Controller_Action {
                     return;
                 }
 
-
-
-
                 $auth = Zend_Auth::getInstance();
                 $auth->getStorage()->write(array('login' => $user->login, 'idUzytkownicy' => $user->idUzytkownicy, 'rola' => $user->rola));
 
@@ -51,7 +48,7 @@ class LoginController extends Noodle_Controller_Action {
             $loginForm->haslo->addError('Błędna próba logowania!');
         }
 
-
+        
 
         $this->view->loginForm = $loginForm;
     }

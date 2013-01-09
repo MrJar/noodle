@@ -65,14 +65,14 @@ Description: Three-column blog design with the third column allocated for ads. F
                 <?php
                 $auth = Zend_Auth::getInstance()->getStorage()->read();
                 
-                if ($auth['rola'] != 1) {
+                if ($auth['rola'] != Application_Model_Uzytkownicy::ROLE_STUDENT) {
 
-                    if ($auth['rola'] == 2) {
+                    if ($auth['rola'] == Application_Model_Uzytkownicy::ROLE_LECTURER) {
 
-                        echo '<li><a href="' . $this->url(array('controller' => 'register2', 'action' => 'index')) . '">Rejestracja</a></li>';
+                        echo '<li><a href="' . $this->url(array('controller' => 'register', 'action' => 'index')) . '">Rejestracja</a></li>';
                     }
 
-                    if ($auth['rola'] == 3) {
+                    if ($auth['rola'] == Application_Model_Uzytkownicy::ROLE_ADMIN) {
 
                         echo '<li><a href="' . $this->url(array('controller' => 'register', 'action' => 'index')) . '">Rejestracja</a></li>';
                     }
