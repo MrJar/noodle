@@ -1,0 +1,50 @@
+<link rel="stylesheet" type="text/css" media="screen"
+      href="<?php echo $this->baseUrl; ?>/css/default.css" /> 
+
+<div id="content">
+
+    <div class="post1">
+        <div class="title">
+            <h2>Lista Użytkowników i Akcje</h2>
+
+        </div>
+
+<table class="standard">
+	  <tr>
+	    <th>idUzytkownicy</th>
+	    <th>Login</th>
+	    
+            <th>Email</th>
+            <th>Rola</th>
+            <th>Grupy_idGrupy</th>
+	    <th colspan="4">Akcje</th>
+	  </tr>
+	  <?php foreach ($this->test as $value)  : ?>
+	    <tr class="<?php echo $this->cycle(array("light", "dark"))->next() ?>">
+	      <td><?= $value->idUzytkownicy; ?></td>
+          <td><?= $value->login; ?></td>
+	      
+              <td><?= $value->email; ?></td>
+              <td><?= $value->rola; ?></td>
+              <td><?= $value->Grupy_idGrupy; ?></td>
+<!--	      <td><a href="/uzytkownicy/edycja-uzytkownika/id/<?php echo $user->id; ?>">Edycja</a></td>
+	      <td><a href="/uzytkownicy/reset-hasla/id/<?php echo $user->id; ?>">Reset hasła</a></td>
+	      <td><a href="/uzytkownicy/zmiana-statusu/id/<?php echo $user->id; ?>/status/<?php echo $link ?>"><?php echo $label; ?></a></td>
+	      <td><a href="/uzytkownicy/usun-uzytkownika/id/<?php echo $user->id; ?>">Usuń</a></td>-->
+	    </tr>
+	 <?php endforeach; ?>
+	</table>
+
+
+
+    </div>
+
+</div>
+<!-- end content -->
+
+
+
+
+
+
+

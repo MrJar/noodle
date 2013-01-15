@@ -15,10 +15,9 @@ class IndexController extends Noodle_Controller_Action
    
     public function testDoctrineAction()
     {
-        $this->_helper->layout->disableLayout();
-        $testTable = Application_Model_TestTable::getInstance();
+         $testTable = Application_Model_TestTable::getInstance();
         $test = $testTable->findAll();
-        var_dump($test);
+        $this->view->test = $test;
     }
     
     public function testIdeoneAction()

@@ -19,7 +19,7 @@ abstract class Application_Model_Base_Test extends Doctrine_Record
 {
     public function setTableDefinition()
     {
-        $this->setTableName('test');
+        $this->setTableName('Test');
         $this->hasColumn('id', 'integer', 4, array(
              'type' => 'integer',
              'length' => 4,

@@ -1,0 +1,28 @@
+<?php if ($this->pageCount) {
+	  $params = Zend_Controller_Front::getInstance()->getRequest()->getParams();
+	  unset ($params['module']);
+	  unset ($params['controller']);
+	  unset ($params['action']);
+	  ?>
+	<div class="paginationControl">
+	  <!-- link do poprzedniej strony -->
+	  <?php if (isset ($this->previous)) { ?>
+	    <a href="<?php echo $this->url(array_merge($params, array('strona' => $this->previous))); ?>">&lt; poprzednia</a> |
+	  <?php } else { ?>
+	    <span class="disabled">&lt; poprzednia</span> |
+	  <?php } ?>
+	  <!-- numerowanie stron -->
+	  <?php  foreach ($this->pagesInRange as $page) { ?>
+	    <?php if ($page != $this->current) { ?>
+	      <a href="<?php echo $this->url(array_merge($params, array('strona' => $page))); ?>"><?php echo $page; ?></a> |
+	    <?php } else { ?>
+	      <?php echo $page; ?> |
+	  <?php }} ?>
+	  <!-- następna strona -->
+	  <?php if (isset ($this->next)) { ?>
+	    <a href="<?php echo $this->url(array_merge($params, array('strona' => $this->next))); ?>">następna &gt;</a>
+	  <?php } else { ?>
+	    <span class="disabled">następna &gt;</span>
+	  <?php } ?>
+	</div>
+	<?php } ?>

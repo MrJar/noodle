@@ -61,7 +61,7 @@ class RegisterController extends Zend_Controller_Action {
               return new Application_Form_Register2();
                 break;
         }
-    }     
+    }
   
     
      

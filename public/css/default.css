@@ -73,6 +73,30 @@ input#Zarejestruj{
     
 }
 
+	table {
+            margin: 10px 0;
+	  border: #999 1px solid;
+	}
+	 
+	table.standard th {
+	  background: #CCCCCC;
+	  font-weight: bold;
+	  padding: 5px 3px;
+	}
+	 
+	table.standard td {
+	  border-top: #999 1px solid;
+	  padding: 5px 3px;
+	}
+	 
+	table.standard tr.dark {
+	  background: #EEEEEE;
+	}
+	 
+	table.standard tr.light {
+	  background: #FFFFFF;
+	}
+
 input#Zarejestruj:hover{
     
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #80b5ea), color-stop(1, #bddbfa) );
@@ -358,6 +382,15 @@ img {
         border-color: lightgrey;
         padding:20px 20px 20px 20px;
         margin: 60px 0 100px 80px;
+      
+}
+.post1 {
+        width:600px;
+	border: 2px solid;
+        border-radius: 10px;
+        border-color: lightgrey;
+        padding:20px 20px 20px 20px;
+        margin: 10px 0 100px -40px;
       
 }
 
