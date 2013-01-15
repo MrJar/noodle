@@ -21,4 +21,21 @@ class Application_Model_Uzytkownicy extends Application_Model_Base_Uzytkownicy
         self::ROLE_LECTURER => 'Wykładowca',
         self::ROLE_ADMIN => 'Admin',
     );
+    
+    
+//    
+//    	public function nowyUzytkownik()
+//	{
+//	$params = $this->_getAllParams();
+//        $uzytkownik = new Application_Model_Uzytkownicy();
+//        $uzytkownik->login = $params['login'];
+//        $uzytkownik->haslo = sha1($params['haslo']);
+//
+//        $uzytkownik->email = $params['email'];
+//        $uzytkownik->rola = $params['rola'];
+//        $uzytkownik->Grupy_idGrupy = $params['Grupy_idGrupy'];
+//        $uzytkownik->save();
+//	    return TRUE;
+//	} 
+	
 }

@@ -19,7 +19,7 @@ class Application_Form_Login extends Zend_Form {
                         array(
                             'label' => 'Hasło',
                             'validators' => array(
-                                array('StringLength', false, array('5'))
+                                array('StringLength', false, array('6'))
                             ),
                             'required' => true
                 )));

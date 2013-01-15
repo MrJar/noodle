@@ -1,7 +1,3 @@
-
-
-
-
 <link rel="stylesheet" type="text/css" media="screen"
       href="<?php echo $this->baseUrl; ?>/css/default.css" /> 
 
@@ -17,8 +13,13 @@
         <br/>
         <br/>
         <br/>
-
-
+        <? foreach($this->errors as $key => $val) {
+            echo 'Pole '. $key. ' - ';
+            foreach($val as $k => $v) {
+                echo $v;
+            }
+            echo '<br>';
+        }?>
         <?= $this->form; ?>
 
 

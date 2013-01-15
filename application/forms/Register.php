@@ -18,6 +18,9 @@ class Application_Form_Register extends Zend_Form {
         $this->addElement(new Zend_Form_Element_Password('haslo',
                         array(
                             'label' => 'Haslo',
+                            'validators' => array(
+                                array('StringLength', false, array('5'))
+                            ),
                             'required' => true
                 )));
 
@@ -25,7 +28,7 @@ class Application_Form_Register extends Zend_Form {
                         array(
                             'label' => 'Email',
                             'validators' => array(
-                                'EmailAdress'
+                                'EmailAddress'
                             ),
                             'required' => true
                 )));
