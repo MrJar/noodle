@@ -5,7 +5,7 @@
  * and open the template in the editor.
  */
 
-class ListaController extends Noodle_Controller_Action
+class UsersController extends Noodle_Controller_Action
 {
     
     public function init()
