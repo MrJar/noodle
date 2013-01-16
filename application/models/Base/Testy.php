@@ -9,7 +9,6 @@ Doctrine_Manager::getInstance()->bindComponent('Application_Model_Testy', 'doctr
  * 
  * @property integer $idTesty
  * @property string $Nazwa_testu
- * @property string $idPrzedmioty
  * @property string $data od
  * @property string $data do
  * @property integer $Przedmioty_idPrzedmioty
@@ -37,15 +36,6 @@ abstract class Application_Model_Base_Testy extends Doctrine_Record
              'autoincrement' => true,
              ));
         $this->hasColumn('Nazwa_testu', 'string', 45, array(
-             'type' => 'string',
-             'length' => 45,
-             'fixed' => false,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => true,
-             'autoincrement' => false,
-             ));
-        $this->hasColumn('idPrzedmioty', 'string', 45, array(
              'type' => 'string',
              'length' => 45,
              'fixed' => false,

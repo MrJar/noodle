@@ -9,8 +9,8 @@ Doctrine_Manager::getInstance()->bindComponent('Application_Model_UzytkownicyHas
  * 
  * @property integer $Uzytkownicy_idUzytkownicy
  * @property integer $Testy_idTesty
- * @property Application_Model_Uzytkownicy $Uzytkownicy
  * @property Application_Model_Testy $Testy
+ * @property Application_Model_Uzytkownicy $Uzytkownicy
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -43,12 +43,12 @@ abstract class Application_Model_Base_UzytkownicyHas_Testy extends Doctrine_Reco
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Application_Model_Uzytkownicy as Uzytkownicy', array(
-             'local' => 'Uzytkownicy_idUzytkownicy',
-             'foreign' => 'idUzytkownicy'));
-
         $this->hasOne('Application_Model_Testy as Testy', array(
              'local' => 'Testy_idTesty',
              'foreign' => 'idTesty'));
+
+        $this->hasOne('Application_Model_Uzytkownicy as Uzytkownicy', array(
+             'local' => 'Uzytkownicy_idUzytkownicy',
+             'foreign' => 'idUzytkownicy'));
     }
 }

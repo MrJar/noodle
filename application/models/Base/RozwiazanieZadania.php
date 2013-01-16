@@ -10,11 +10,11 @@ Doctrine_Manager::getInstance()->bindComponent('Application_Model_RozwiazanieZad
  * @property integer $idZadania
  * @property integer $idU?ytkownicy
  * @property string $rozwiazanie
- * @property string $zdobyte_pkt
+ * @property integer $zdobyte_pkt
  * @property integer $Uzytkownicy_idUzytkownicy
  * @property integer $Testy_Sprawdzone_idTesty_Sprawdzone
- * @property Application_Model_Uzytkownicy $Uzytkownicy
  * @property Application_Model_Testy_Sprawdzone $Testy_Sprawdzone
+ * @property Application_Model_Uzytkownicy $Uzytkownicy
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -43,18 +43,18 @@ abstract class Application_Model_Base_RozwiazanieZadania extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('rozwiazanie', 'string', 45, array(
+        $this->hasColumn('rozwiazanie', 'string', 500, array(
              'type' => 'string',
-             'length' => 45,
+             'length' => 500,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('zdobyte_pkt', 'string', 45, array(
-             'type' => 'string',
-             'length' => 45,
+        $this->hasColumn('zdobyte_pkt', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => 4,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
@@ -83,12 +83,12 @@ abstract class Application_Model_Base_RozwiazanieZadania extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Application_Model_Uzytkownicy as Uzytkownicy', array(
-             'local' => 'Uzytkownicy_idUzytkownicy',
-             'foreign' => 'idUzytkownicy'));
-
         $this->hasOne('Application_Model_Testy_Sprawdzone as Testy_Sprawdzone', array(
              'local' => 'Testy_Sprawdzone_idTesty_Sprawdzone',
              'foreign' => 'idTesty_Sprawdzone'));
+
+        $this->hasOne('Application_Model_Uzytkownicy as Uzytkownicy', array(
+             'local' => 'Uzytkownicy_idUzytkownicy',
+             'foreign' => 'idUzytkownicy'));
     }
 }

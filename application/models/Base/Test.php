@@ -25,8 +25,9 @@ abstract class Application_Model_Base_Test extends Doctrine_Record
              'length' => 4,
              'fixed' => false,
              'unsigned' => false,
-             'primary' => true,
-             'autoincrement' => true,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
              ));
         $this->hasColumn('dane', 'integer', 4, array(
              'type' => 'integer',
