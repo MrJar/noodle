@@ -23,8 +23,6 @@ class Application_Model_ZadaniaTable extends Doctrine_Table
                 ->from('Application_Model_Zadania as Zadania')
                 ->where('idZadania = ?', $idZadania);
         
-        var_dump($query->getSqlQuery());
-        
-        //return $query->execute();
+        return $query->fetchOne();
     }
 }
