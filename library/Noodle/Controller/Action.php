@@ -26,4 +26,9 @@ class Noodle_Controller_Action extends Zend_Controller_Action{
             $this->view->login = $user['login'];
         }
     }
+    
+    protected function _disableLayout()
+    {
+        $this->_helper->layout->disableLayout();
+    }
 }
