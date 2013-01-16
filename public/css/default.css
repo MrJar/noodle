@@ -359,6 +359,7 @@ img {
 
 #page {
 	width: 890px;
+        min-height: 600px;
 	margin: 0 auto;
 	padding: 30px 0;;
 }
