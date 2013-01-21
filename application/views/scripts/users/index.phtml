@@ -19,20 +19,21 @@
             <th>Grupy_idGrupy</th>
 	    <th colspan="4">Akcje</th>
 	  </tr>
-	  <?php foreach ($this->test as $value)  : ?>
+	  <?php 
+ foreach ($this->test as $value)  :  if($value->rola == Application_Model_Uzytkownicy::ROLE_ADMIN) {?>
 	    <tr class="<?php echo $this->cycle(array("light", "dark"))->next() ?>">
 	      <td><?= $value->idUzytkownicy; ?></td>
-          <td><?= $value->login; ?></td>
+              <td><?= $value->login; ?></td>
 	      
               <td><?= $value->email; ?></td>
-              <td><?= $value->rola; ?></td>
+              <td><?= Application_Model_Uzytkownicy::$role[$value->rola]; ?></td>
               <td><?= $value->Grupy_idGrupy; ?></td>
 <!--	      <td><a href="/uzytkownicy/edycja-uzytkownika/id/<?php echo $user->id; ?>">Edycja</a></td>
 	      <td><a href="/uzytkownicy/reset-hasla/id/<?php echo $user->id; ?>">Reset hasła</a></td>
 	      <td><a href="/uzytkownicy/zmiana-statusu/id/<?php echo $user->id; ?>/status/<?php echo $link ?>"><?php echo $label; ?></a></td>
 	      <td><a href="/uzytkownicy/usun-uzytkownika/id/<?php echo $user->id; ?>">Usuń</a></td>-->
 	    </tr>
-	 <?php endforeach; ?>
+	 <?php } endforeach; ?>
 	</table>
 
 
