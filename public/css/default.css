@@ -113,7 +113,7 @@ input#Zarejestruj:active {
     
 
 
-dt#login-label, dt#haslo-label,dt#email-label,dt#rola-label,dt#Grupy_idGrupy-label{
+dt#login-label, dt#haslo-label,dt#haslo2-label,dt#email-label,dt#rola-label,dt#Grupy_idGrupy-label{
     
    color:grey;
    font-size: 15px;
@@ -122,7 +122,7 @@ dt#login-label, dt#haslo-label,dt#email-label,dt#rola-label,dt#Grupy_idGrupy-lab
     
     
 }
-input#login,input#haslo, input#email, select#rola,select#Grupy_idGrupy{
+input#login,input#haslo,input#haslo2, input#email, select#rola,select#Grupy_idGrupy{
     
     padding: 9px;  
     border: solid 1px #E5E5E5;  
@@ -144,12 +144,12 @@ input#login,input#haslo, input#email, select#rola,select#Grupy_idGrupy{
 
 
 
-input#login:hover,input#haslo:hover,input#email:hover, select#rola:hover,select#Grupy_idGrupy:hover{  
+input#login:hover,input#haslo:hover,input#haslo2:hover,input#email:hover, select#rola:hover,select#Grupy_idGrupy:hover{  
      border-color: #C9C9C9;  
     -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px; 
     } 
     
-input#login:focus,input#haslo:focus,input#email:focus, select#rola:focus,select#Grupy_idGrupy:focus{
+input#login:focus,input#haslo:focus,input#haslo2:focus,input#email:focus, select#rola:focus,select#Grupy_idGrupy:focus{
         
         border: 1px solid #6AA2FD;
        -moz-box-shadow: 0 0 1px 1px #6AA2FD;
