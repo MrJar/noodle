@@ -88,7 +88,9 @@ Description: Three-column blog design with the third column allocated for ads. F
             </ul>
             <h2>Twoje testy</h2>
             <ul>
-                <li><a href="/tests/id=2"</li>
+                <?php foreach ($this->testForStudent as $test) : ?>
+                    <li><a href="/tests/?id=<?= $test->idTesty ?>"><?= $test->Nazwa_testu ?></a></li>
+                <?php endforeach; ?>
             </ul>
         </li>
         <li id="calendar">

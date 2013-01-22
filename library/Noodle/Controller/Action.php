@@ -25,6 +25,8 @@ class Noodle_Controller_Action extends Zend_Controller_Action{
         if ( $auth->hasIdentity() ) {
             $user = $auth->getIdentity();
             $this->view->login = $user['login'];
+            
+            $this->view->testForStudent = Noodle_View_Helper_GetTestsForUser::getTestForUser();
         }
     }
     
