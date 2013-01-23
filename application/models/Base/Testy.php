@@ -9,9 +9,8 @@ Doctrine_Manager::getInstance()->bindComponent('Application_Model_Testy', 'doctr
  * 
  * @property integer $idTesty
  * @property string $Nazwa_testu
- * @property string $idPrzedmioty
- * @property string $data od
- * @property string $data do
+ * @property string $data_od
+ * @property string $data_do
  * @property integer $Przedmioty_idPrzedmioty
  * @property Application_Model_Przedmioty $Przedmioty
  * @property Doctrine_Collection $Testy_Sprawdzone
@@ -45,7 +44,7 @@ abstract class Application_Model_Base_Testy extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('idPrzedmioty', 'string', 45, array(
+        $this->hasColumn('data_od', 'string', 45, array(
              'type' => 'string',
              'length' => 45,
              'fixed' => false,
@@ -54,16 +53,7 @@ abstract class Application_Model_Base_Testy extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('data od', 'string', 45, array(
-             'type' => 'string',
-             'length' => 45,
-             'fixed' => false,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => true,
-             'autoincrement' => false,
-             ));
-        $this->hasColumn('data do', 'string', 45, array(
+        $this->hasColumn('data_do', 'string', 45, array(
              'type' => 'string',
              'length' => 45,
              'fixed' => false,

@@ -16,4 +16,13 @@ class Application_Model_ZadaniaTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Application_Model_Zadania');
     }
+    
+    public function getZadanie($idZadania)
+    {
+        $query = Doctrine_Query::create()
+                ->from('Application_Model_Zadania as Zadania')
+                ->where('idZadania = ?', $idZadania);
+        
+        return $query->fetchOne();
+    }
 }

@@ -25,3 +25,5 @@ Miejsca do ogarniecia z podstaw Zend-a:
  - http://akrabat.com/zend-framework-tutorial/
 
 paralele
+
+hey

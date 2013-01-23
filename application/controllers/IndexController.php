@@ -15,13 +15,14 @@ class IndexController extends Noodle_Controller_Action
    
     public function testDoctrineAction()
     {
-        $testTable = Application_Model_TestTable::getInstance();
+         $testTable = Application_Model_TestTable::getInstance();
         $test = $testTable->findAll();
         $this->view->test = $test;
     }
     
     public function testIdeoneAction()
     {
+        $this->_helper->layout->disableLayout();
         $ideone = new Noodle_Ideone_Api();
         
         //var_dump($ideone->getListOfMethod());
@@ -55,6 +56,17 @@ class IndexController extends Noodle_Controller_Action
         //var_dump($ideone->getSubmissionDetails($link, $withSource, $withInput, $withOutput, $withStderr, $withCmpinfo));
         
         return;
+    }
+    
+    public function testMailsAction()
+    {
+        $this->_helper->layout->disableLayout();
+        $subject="Test";
+        $addresses=array('[jakisprawidlowy@mail.com]','ikolejny');
+        $htmltemplate="test.phtml";
+        $parameters=array("test"=>"cos tam testowego", "kolejnyparametr" => "wartosc");
+
+        Noodle_View_Helper_Mail::sendHtml($subject, $addresses, $htmltemplate, $parameters);
     }
 }
 

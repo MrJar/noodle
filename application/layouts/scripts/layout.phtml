@@ -17,7 +17,7 @@ Description: Three-column blog design with the third column allocated for ads. F
 <title>Noodle</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link href="css/default.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="/css/default.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
 <!-- start header -->
@@ -48,9 +48,9 @@ Description: Three-column blog design with the third column allocated for ads. F
 <!-- start page -->
 <div id="page">
 
-	
-			
-                    <?php echo $this->layout()->content; ?>
+    <div id="content">
+        <?php echo $this->layout()->content; ?>
+    </div>
 
 
 <!-- start sidebar -->
@@ -85,6 +85,17 @@ Description: Three-column blog design with the third column allocated for ads. F
                 
                     ?>
                 <?php endif; ?>
+            </ul>
+            <h2>Twoje testy</h2>
+            <ul>
+            <?php if ($this->isCanAddTest) : ?>
+                <li><a href="/tests/add">Dodaj test</a></li>
+                <li><a href="/tests/list">Lista wszystkich test-ów</a></li>
+                <hr />
+            <?php endif; ?>
+                <?php foreach ($this->testForStudent as $test) : ?>
+                    <li><a href="/tests/?id=<?= $test->idTesty ?>"><?= $test->Nazwa_testu ?></a></li>
+                <?php endforeach; ?>
             </ul>
         </li>
         <li id="calendar">

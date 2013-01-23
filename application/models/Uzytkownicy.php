@@ -16,9 +16,13 @@ class Application_Model_Uzytkownicy extends Application_Model_Base_Uzytkownicy
     const ROLE_LECTURER = '2';
     const ROLE_ADMIN = '3';
     
-    public $role = array (
+    static public $role = array (
         self::ROLE_STUDENT => 'Student',
         self::ROLE_LECTURER => 'Wykładowca',
         self::ROLE_ADMIN => 'Admin',
     );
+    
+
+
+	
 }

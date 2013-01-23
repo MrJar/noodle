@@ -15,7 +15,7 @@ Doctrine_Manager::getInstance()->bindComponent('Application_Model_Zadania', 'doc
  * @property string $wyniki
  * @property integer $status
  * @property integer $punkty
- * @property integer $poziomtrudno?ci
+ * @property integer $poziomtrudnosci
  * @property integer $Przedmioty_idPrzedmioty
  * @property Application_Model_Przedmioty $Przedmioty
  * @property Doctrine_Collection $TestyHas_Zadania
@@ -101,7 +101,7 @@ abstract class Application_Model_Base_Zadania extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('poziomtrudno?ci', 'integer', 4, array(
+        $this->hasColumn('poziomtrudnosci', 'integer', 4, array(
              'type' => 'integer',
              'length' => 4,
              'fixed' => false,
