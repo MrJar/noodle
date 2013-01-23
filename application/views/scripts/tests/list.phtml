@@ -1,0 +1,21 @@
+<table>
+<?php foreach ($this->tests as $test) : ?>
+        <tr>
+            <td>
+                <?= $test->Nazwa_testu ?>
+            </td>
+            <td>
+                <?= $test->data_od ?>
+            </td>
+            <td>
+                <?= $test->data_do ?>
+            </td>
+            <td>
+                <?= $test->getPrzedmiotNameById()->nazwa; ?>
+            </td>
+            <td>
+                <a href="/tests/edit/?id=<?= $test->idTesty ?>">Edytuj</a>
+            </td>
+        </tr>
+<?php endforeach; ?>
+</table>

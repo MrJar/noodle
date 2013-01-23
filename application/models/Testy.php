@@ -12,5 +12,7 @@
  */
 class Application_Model_Testy extends Application_Model_Base_Testy
 {
-
+    public function getPrzedmiotNameById() {
+        return Application_Model_PrzedmiotyTable::getInstance()->findOneByIdPrzedmioty($this->Przedmioty_idPrzedmioty);
+    }
 }

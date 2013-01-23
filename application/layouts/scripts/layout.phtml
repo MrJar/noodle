@@ -48,9 +48,9 @@ Description: Three-column blog design with the third column allocated for ads. F
 <!-- start page -->
 <div id="page">
 
-	
-			
-                    <?php echo $this->layout()->content; ?>
+    <div id="content">
+        <?php echo $this->layout()->content; ?>
+    </div>
 
 
 <!-- start sidebar -->
@@ -90,6 +90,7 @@ Description: Three-column blog design with the third column allocated for ads. F
             <ul>
             <?php if ($this->isCanAddTest) : ?>
                 <li><a href="/tests/add">Dodaj test</a></li>
+                <li><a href="/tests/list">Lista wszystkich test-ów</a></li>
                 <hr />
             <?php endif; ?>
                 <?php foreach ($this->testForStudent as $test) : ?>

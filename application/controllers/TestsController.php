@@ -12,6 +12,9 @@ class TestsController extends Noodle_Controller_Action
         parent::init();
     }
 
+    /**
+     * @des Pokazuje test do rozwiazania po jego id
+     */
     public function indexAction()
     {
         $params = $this->_getAllParams();
@@ -19,6 +22,11 @@ class TestsController extends Noodle_Controller_Action
         $this->view->testAbout = $testAbout;
     }
     
+    public function listAction()
+    {
+        $this->view->tests = Application_Model_TestyTable::getInstance()->findAll();
+    }
+
     public function rozwiazAction()
     {
         $params = $this->_getAllParams();
@@ -30,6 +38,10 @@ class TestsController extends Noodle_Controller_Action
         $this->_session->testForm = null;
     }
 
+    /**
+     * 
+     * @desc Zapisauje rozwiazany test
+     */
     public function saveAction()
     {
         if ($this->getRequest()->isPost()) {
@@ -73,6 +85,10 @@ class TestsController extends Noodle_Controller_Action
         }
     }
     
+    /**
+     * 
+     * @desc Dodaje nowy test
+     */
     public function addAction()
     {
         if (!Noodle_View_Helper_IsCanAddTest::isCanAddTest()) {
