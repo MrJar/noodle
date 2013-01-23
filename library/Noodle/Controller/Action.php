@@ -27,6 +27,7 @@ class Noodle_Controller_Action extends Zend_Controller_Action{
             $this->view->login = $user['login'];
             
             $this->view->testForStudent = Noodle_View_Helper_GetTestsForUser::getTestForUser();
+            $this->view->isCanAddTest = Noodle_View_Helper_IsCanAddTest::isCanAddTest();
         }
     }
     
