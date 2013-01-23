@@ -48,8 +48,7 @@ class LoginController extends Noodle_Controller_Action {
             $loginForm->haslo->addError('Błędna próba logowania!');
         }
 
-        
-
+      
         $this->view->loginForm = $loginForm;
     }
 
