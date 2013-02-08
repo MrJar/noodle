@@ -1,10 +1,10 @@
 <?php
 
-class RegisterController extends Zend_Controller_Action {
+class RegisterController extends Noodle_Controller_Action {
    private $form;
     public function init() {
         /* Initialize action controller here */
-        
+        parent::init();
  
             
     }
