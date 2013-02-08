@@ -95,13 +95,15 @@ Description: Three-column blog design with the third column allocated for ads. F
                 <li><a href="/tests/list">Lista wszystkich test-ów</a></li>
                 <hr />
             <?php endif; ?>
-                <?php /*if (!empty($this->testForStudent)): ?>
+                //
+                <?php if (!empty($this->testForStudent)): ?>
                 <?php foreach ($this->testForStudent as $test) : ?>
                     <li><a href="/tests/?id=<?= $test->idTesty ?>"><?= $test->Nazwa_testu ?></a></li>
                 <?php endforeach; ?>
                 <?php else: ?>
                     Brak testów
-                <?php endif; */?>
+                <?php endif; ?>
+                //
             </ul>
         </li>
         <li id="calendar">
