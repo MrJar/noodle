@@ -10,6 +10,7 @@ class TestsController extends Noodle_Controller_Action
     public function init()
     {
         parent::init();
+        $this->auth = Zend_Auth::getInstance();
     }
 
     /**
@@ -136,5 +137,75 @@ class TestsController extends Noodle_Controller_Action
         }
         
         $this->view->addTestForm = $addTestForm;
+    }
+    
+    public function genAction()
+    {
+        $przedmiot = $this->_getParam('Przedmioty_idPrzedmioty', false);
+        $ileZadan = $this->_getParam('ilosc', false);
+        
+        $form = new Application_Form_GenTest(array('przedmiot' => $przedmiot, 'ileZadan' => $ileZadan));
+        
+                
+        if ($this->getRequest()->isPost()) {
+            $postData = $this->getAllParams();
+            
+            if (!empty($postData['Zapisz']) &&$form->isValid($postData)) {
+                $params = $postData;
+                $test = new Application_Model_Testy();
+                $test->Nazwa_testu = $params['Nazwa_testu'];
+                $test->data_od = $params['data_od'];
+                $test->data_do = $params['data_do'];
+                $test->Przedmioty_idPrzedmioty = $params['Przedmioty_idPrzedmioty'];
+                $test->save();
+                
+                $uzytkownicyHas_Przedmioty = Application_Model_UzytkownicyHas_PrzedmiotyTable::getInstance()->findAll();
+                foreach ($uzytkownicyHas_Przedmioty as $user) {
+                    if ($user->Przedmioty_idPrzedmioty == $params['Przedmioty_idPrzedmioty']) {
+                        $uzytkownicyHas_Testy = new Application_Model_UzytkownicyHas_Testy();
+                        $uzytkownicyHas_Testy->Uzytkownicy_idUzytkownicy = $user->Uzytkownicy_idUzytkownicy;
+                        $uzytkownicyHas_Testy->Testy_idTesty = $test->idTesty;
+                        $uzytkownicyHas_Testy->save();
+                    }
+                }
+               
+                $zadania_mdl = Application_Model_ZadaniaTable::getInstance();
+                $zadania = $zadania_mdl->getRandom($przedmiot,$ileZadan);
+                foreach ($zadania as $zadanie) {
+                    
+                    //if ($params['zadanie_'.$zadanie['idZadania']]) {
+                        $testyHas_Zadania = new Application_Model_TestyHas_Zadania();
+                        $testyHas_Zadania->Testy_idTesty = $test['idTesty'];
+                        $testyHas_Zadania->Zadania_idZadania = $zadanie['idZadania'];
+                        $testyHas_Zadania->save();
+                    //}
+                }
+                
+                $this->view->msg = "Nowy test został dodany";
+            }
+            $values = $form->getValues();
+            //var_dump($values);
+//            if (isset($values['Przedmioty_idPrzedmioty'])) {
+//                Application_Form_GenTest::$przedmiot = $values['Przedmioty_idPrzedmioty'];
+//            }
+//            if (isset($values['ilosc'])) {
+//                Application_Form_GenTest::$ileZadan = $values['ilosc'];
+//            }
+
+            $form->populate($postData);
+        }
+        
+        
+        $this->view->genTestForm = $form;
+        $this->view->msg = false;
+    }
+    
+    public function doneAction()
+    {
+        $testy_mdl = Application_Model_TestySprawdzoneTable::getInstance();
+        $me = $this->auth->getIdentity();
+        $id = $me['idUzytkownicy'];
+        
+        $this->view->tests = ($testy_mdl->getTesty(array('Uzytkownicy_idUzytkownicy = ?',$id)));
     }
 }

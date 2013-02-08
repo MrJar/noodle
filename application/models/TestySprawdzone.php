@@ -10,7 +10,7 @@
  * @author     ##NAME## <##EMAIL##>
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
-class Application_Model_Zadania extends Application_Model_Base_Zadania
+class Application_Model_TestySprawdzone extends Application_Model_Base_Testy_Sprawdzone
 {
 
 }

@@ -1,0 +1,20 @@
+<h2>Moje testy</h2>
+<table>
+    <thead>
+        <th>Id Testu</th>
+        <th>Zdobyte punkty</th>
+    </thead>
+    <tbody>
+<?php foreach ($this->tests as $test) : ?>
+        <tr>
+            <td>
+                <?= $test['idTesty'] ?>
+            </td>
+            <td>
+                <?= $test['zdobyte_punkty'] ?>
+            </td>
+            
+        </tr>
+<?php endforeach; ?>
+    </tbody>
+</table>

@@ -25,4 +25,54 @@ class Application_Model_ZadaniaTable extends Doctrine_Table
         
         return $query->fetchOne();
     }
-}
+    
+    /**
+     * 
+     * @param int $przedmiot
+     * @param int $limit
+     */
+    public function getRandom($przedmiot, $limit)
+    {
+        $query = Doctrine_Query::create()
+                ->from('Application_Model_Zadania as Zadania')
+                ->where('Przedmioty_idPrzedmioty = ?', $przedmiot)
+                ->orderBy('RAND()')
+                ->limit($limit);
+        
+        return $query->fetchArray();
+    }
+    
+    /**
+     * $where = array(
+     *      'kolumna = ?' => 'warunek'
+     * )
+     * @param type $where
+     */
+    public function getZadania($where = array(), $count = false)
+    {
+        if ($count) {
+            $query = Doctrine_Query::create()
+                    ->select('COUNT(*)')
+                    ->from('Application_Model_Zadania as Zadania');
+        }
+        else {
+            $query = Doctrine_Query::create()
+                    ->from('Application_Model_Zadania as Zadania');
+        }
+        
+        if(!empty($where)) {
+            foreach ($where as $col => $cond) {
+                $query->where($col, $cond);
+            }
+        }
+
+        
+        if ($count) {
+            $result = $query->fetchArray();
+            return $result[0]['COUNT'];
+        }
+        else {
+            return $query->fetchArray();
+        }
+    }
+}   

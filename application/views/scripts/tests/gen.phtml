@@ -1,0 +1,17 @@
+<script>
+    $(document).ready(function() {
+        $('#genTest').on('change', '#Przedmioty_idPrzedmioty',function() {
+            $(this).parents('form').submit();
+        });
+        $('#genTest').on('change', '#ilosc',function() {
+            $(this).parents('form').submit();
+        });
+    });
+    
+</script>
+
+<?php if (!$this->msg) : ?>
+<?= $this->genTestForm; ?>
+<?php else : ?>
+<h2><?= $this->msg; ?></h2>
+<?php endif; ?>
