@@ -7,9 +7,7 @@ class SubjectController extends Noodle_Controller_Action {
     }
     
     public function indexAction() {
-        
-       
-        
+  
     }
     
     public function addAction() {
@@ -20,7 +18,7 @@ class SubjectController extends Noodle_Controller_Action {
         $subject->kierunek = $params['kierunek'];
         $subject->grupa = $params['grupa'];
         $subject->save(); 
-        
+        $this->view->msg = "Nowy przedmiot został dodany";
         $this->view->addForm = new Application_Form_SubjectAdd();
         
     } 
@@ -28,46 +26,30 @@ class SubjectController extends Noodle_Controller_Action {
     public function editAction() {
       
         $params = $this->_getAllParams();
-        $subjectTable = Application_Model_UzytkownicyTable::getInstance();
-        $subject = $subjectTable->findOneByLogin($params['idPrzedmioty'], ['nazwa'], ['kierunek'], ['grupa']);
-        
-        if (($params['idPrzedmioty'])== $subject->idPrzedmioty) {
-
-        $subject = new Application_Model_Przedmioty();
+        $subjectTable = Application_Model_PrzedmiotyTable::getInstance();
+        $subject = $subjectTable->findOneByIdPrzedmioty($params['idPrzedmioty']);
         $subject->nazwa = $params['nazwa'];
         $subject->kierunek = $params['kierunek'];
         $subject->grupa = $params['grupa'];
         $subject->save();  
-        $this->view->addForm = new Application_Form_SubjectAdd();
-        }
+        $this->view->msg = "Przedmiot został zmieniony";
+        $this->view->editForm = new Application_Form_SubjectAdd();
+        
     }
     
     public function removeAction() {
         
         $params = $this->_getAllParams();
-        $subjectTable = Application_Model_UzytkownicyTable::getInstance();
-        $subject = $subjectTable->findOneByLogin($params['idPrzedmioty']);
-        
-        if (($params['idPrzedmioty'])== $subject->idPrzedmioty) {
-             $subject->delete();       
-        $this->view->addForm = new Application_Form_SubjectShow();
-        }
-        
+        $subjectTable = Application_Model_PrzedmiotyTable::getInstance();
+        $subject = $subjectTable->findOneByIdPrzedmioty($params['idPrzedmioty']);
+        $subject->delete();       
+        $this->view->msg = "Przedmiot został usuniety";  
     }
     
-    public function showAction() {
-        
-        $params = $this->_getAllParams();
-        $subjectTable = Application_Model_UzytkownicyTable::getInstance();
-        $subject = $subjectTable->findOneByLogin($params['idPrzedmioty'], ['nazwa']);
-        
-        if (($params['idPrzedmioty'])== $subject->idPrzedmioty) {
-        $subject = new Application_Model_Przedmioty();
-        $subject->nazwa = $params['nazwa'];   
-        $this->view->addForm = new Application_Form_SubjectShow();
-         }
+     public function przedmiotyAction()
+    {
+        $this->view->subject = Application_Model_PrzedmiotyTable::getInstance()->findAll();
     }
-    
 }
 
 ?>
