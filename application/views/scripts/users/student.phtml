@@ -1,8 +1,6 @@
-
-
-    <div class="post1">
+<div class="post1">
         <div class="title">
-            <h2>Lista Użytkowników i Akcje</h2>
+            <h2>Lista Studnetów i Akcje</h2>
 
         </div>
 
@@ -24,7 +22,7 @@
 
 
 	  <?php 
- foreach ($this->paginator as $value)  :  ?>
+ foreach ($this->paginator as $value)  : if($value['rola'] == Application_Model_Uzytkownicy::ROLE_STUDENT) { ?>
 	    <tr class="<?php echo $this->cycle(array("light", "dark"))->next() ?>">
 	      <td><?= $value['idUzytkownicy']; ?></td>
               <td><?= $value['login']; ?></td>
@@ -32,20 +30,16 @@
               <td><?= $value['email']; ?></td>
               <td><?= Application_Model_Uzytkownicy::$role[$value['rola']]; ?></td>
               <td><?= $value['Grupy_idGrupy']; ?></td>
-<!--	      <td><a href="/uzytkownicy/edycja-uzytkownika/id/<?php echo $user->id; ?>">Edycja</a></td>
-	      <td><a href="/uzytkownicy/reset-hasla/id/<?php echo $user->id; ?>">Reset hasła</a></td>
-	      <td><a href="/uzytkownicy/zmiana-statusu/id/<?php echo $user->id; ?>/status/<?php echo $link ?>"><?php echo $label; ?></a></td>
-	      <td><a href="/uzytkownicy/usun-uzytkownika/id/<?php echo $user->id; ?>">Usuń</a></td>-->
+	      <td><a href="/users/editstudent/id/<?php echo $value['idUzytkownicy']; ?>">Edycja</a></td>
+    
+	      <?php echo '<td><a href="/users/deletestudent/id/'. $value['idUzytkownicy'] .'" onclick="if(!confirm(\'Na pewno chcesz usunąć użytkownika : '.$value['login'].' ? \' )) return false;">Usuń</a></td>'; ?>
 	    </tr>
-	 <?php  endforeach; ?>
+	 <?php } endforeach; ?>
 	</table>
 
 
 
     </div>
-
-
-
 
 
 

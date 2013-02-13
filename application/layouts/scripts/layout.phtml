@@ -19,6 +19,39 @@ Description: Three-column blog design with the third column allocated for ads. F
 <meta name="description" content="" />
 <link href="/css/default.css" rel="stylesheet" type="text/css" media="screen" />
 <script type="text/javascript" src="/jquery.min.js"></script>
+<link href="/css/normalize.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="/css/datepicker.css" rel="stylesheet" type="text/css" media="screen" />
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script src="/jquery.ui.datepicker-pl.js"></script>
+
+<script>
+$(function() {
+    $( "#datepicker" ).datepicker($.datepicker.regional['pl']);
+    
+});
+
+  $(document).ready(function() {
+  function myDate(){
+  var now = new Date();
+
+  var outHour = now.getHours();
+  
+  if(outHour<10){document.getElementById('HourDiv').innerHTML="0"+outHour;}
+  else{document.getElementById('HourDiv').innerHTML=outHour;}
+
+  var outMin = now.getMinutes();
+  if(outMin<10){document.getElementById('MinutDiv').innerHTML="0"+outMin;}
+  else{document.getElementById('MinutDiv').innerHTML=outMin;}
+
+  var outSec = now.getSeconds();
+  if(outSec<10){document.getElementById('SecDiv').innerHTML="0"+outSec;}
+  else{document.getElementById('SecDiv').innerHTML=outSec;}
+
+
+} myDate(); setInterval(function(){ myDate();}, 1000); });
+
+</script>
 </head>
 <body>
 <!-- start header -->
@@ -27,15 +60,12 @@ Description: Three-column blog design with the third column allocated for ads. F
 		<h1><a href="/">Noodle</a></h1>
 		
 	</div>
-	<div id="rss"></div>
-	<div id="search">
-		<form id="searchform" method="get" action="">
-			<fieldset>
-				<input type="text" name="s" id="s" size="15" value="" />
-				<input type="submit" id="x" value="Search" />
-			</fieldset>
-		</form>
-	</div>
+	<div id="clockDiv"></div>
+  
+  <div id="Content2">
+  <div id="HourDiv"></div><span id="c">:</span><div id="MinutDiv"></div><span id="c">:</span><div id="SecDiv"></div>
+  </div>
+	
 </div>
 <!-- end header -->
 <!-- star menu -->
@@ -71,11 +101,14 @@ Description: Three-column blog design with the third column allocated for ads. F
                     if ($auth['rola'] == Application_Model_Uzytkownicy::ROLE_LECTURER) {
 
                         echo '<li><a href="' . $this->url(array('controller' => 'register', 'action' => 'index')) . '">Rejestracja</a></li>';
+                        echo '<li><a href="' . $this->url(array('controller' => 'users', 'action' => 'student')) . '">Lista studentów</a></li>';
                     }
 
                     if ($auth['rola'] == Application_Model_Uzytkownicy::ROLE_ADMIN) {
 
                         echo '<li><a href="' . $this->url(array('controller' => 'register', 'action' => 'index')) . '">Rejestracja</a></li>';
+                         echo '<li><a href="' . $this->url(array('controller' => 'users', 'action' => 'student')) . '">Lista studentów</a></li>';
+                          echo '<li><a href="' . $this->url(array('controller' => 'users', 'action' => 'lecturer')) . '">Lista wykładowców</a></li>';
                     }
                 }
                 ?>
@@ -108,76 +141,12 @@ Description: Three-column blog design with the third column allocated for ads. F
         </li>
         <li id="calendar">
             <h2>Kalendarz</h2>
-            <div id="calendar_wrap">
-                <table id="wp-calendar" summary="Calendar">
-                    <caption>
-                        August 2007
-                    </caption>
-                    <thead>
-                        <tr>
-                            <th abbr="Monday" scope="col" title="Monday">M</th>
-                            <th abbr="Tuesday" scope="col" title="Tuesday">T</th>
-                            <th abbr="Wednesday" scope="col" title="Wednesday">W</th>
-                            <th abbr="Thursday" scope="col" title="Thursday">T</th>
-                            <th abbr="Friday" scope="col" title="Friday">F</th>
-                            <th abbr="Saturday" scope="col" title="Saturday">S</th>
-                            <th abbr="Sunday" scope="col" title="Sunday">S</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <td abbr="July" colspan="3" id="prev"><a href="#">&laquo; Jul</a></td>
-                            <td class="pad">&nbsp;</td>
-                            <td abbr="September" colspan="3" id="next" class="pad"><a href="#">Sep &raquo;</a></td>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                        <tr>
-                            <td colspan="2" class="pad">&nbsp;</td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>7</td>
-                            <td>8</td>
-                            <td>9</td>
-                            <td>10</td>
-                            <td>11</td>
-                            <td>12</td>
-                        </tr>
-                        <tr>
-                            <td>13</td>
-                            <td>14</td>
-                            <td>15</td>
-                            <td>16</td>
-                            <td>17</td>
-                            <td>18</td>
-                            <td>19</td>
-                        </tr>
-                        <tr>
-                            <td>20</td>
-                            <td id="today">21</td>
-                            <td>22</td>
-                            <td>23</td>
-                            <td>24</td>
-                            <td>25</td>
-                            <td>26</td>
-                        </tr>
-                        <tr>
-                            <td>27</td>
-                            <td>28</td>
-                            <td>29</td>
-                            <td>30</td>
-                            <td>31</td>
-                            <td class="pad" colspan="2">&nbsp;</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            
+                
+                   <div id="datepicker"></div>
+                    
+                
+           
         </li>
 
     </ul>

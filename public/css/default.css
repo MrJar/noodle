@@ -82,10 +82,12 @@ input#Zarejestruj{
 .paginationControl span.disabled {
     color: #CCCCCC;
 }
+#c {float:left;color:rgb(87,88,90);font-size:25px;}
 
 table {
     margin: 10px 0;
     border: #999 1px solid;
+    width:600px;
 }
 
 table.standard th {
@@ -97,6 +99,7 @@ table.standard th {
 table.standard td {
     border-top: #999 1px solid;
     padding: 5px 3px;
+    text-align:center
 }
 
 table.standard tr.dark {
@@ -253,11 +256,21 @@ img {
     margin: 0 auto;
 }
 
+ #Content2 {margin-left:730px;padding-top: 40px;width:140px;display:table;}
+  #HourDiv, #MinutDiv, #SecDiv {float:left;color:rgb(87,88,90);width:40px;text-align:center;font-size:25px;}
+
 #logo h1, #logo p {
     float: left;
     color: #3B3B3B;
 }
 
+.data{
+    
+    position: absolute;
+    top:10%;
+    
+    
+}
 #logo h1 {
     height: 88px;
     padding: 20px 90px 0 0;
