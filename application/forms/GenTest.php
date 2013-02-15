@@ -2,8 +2,7 @@
 
 class Application_Form_GenTest extends Zend_Form {
 
-    public static $przedmiot = false;
-    public static $ileZadan = false;
+
    /* 
     public function __construct($options = null) {
         parent::__construct($options);
