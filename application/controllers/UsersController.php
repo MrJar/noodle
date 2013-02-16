@@ -47,16 +47,10 @@ class UsersController extends Noodle_Controller_Action {
         $params = $this->_getAllParams();
         $form->setAction('/users/editstudent/id/' . $this->_request->getParam('id'))
                 ->setMethod('post');
-        // usuwamy pole z hasłem
-        $form->removeElement('haslo');
-        $form->removeElement('haslo2');
+     
+       
         if ($this->getRequest()->isPost()) {
 
-            $email = $form->getValue('email');
-            $login = $form->getValue('login');
-
-            $rola = $form->getValue('rola');
-            $Grupy_idGrupy = $form->getValue('Grupy_idGrupy');
 
             if ($form->isValid($params)) {
                 $user->login = $params['login'];
