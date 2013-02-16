@@ -73,19 +73,28 @@ class Application_Form_Register extends Zend_Form {
                         array(
                             'label' => 'Rola',
                             'multiOptions' => array(
+                                
                                 '1' => 'Student',
                                 '2' => 'Wykładowca',
                             ),
                             'required' => true
                 )));
+        
+        $grupy = Application_Model_GrupyTable::getInstance()->findAll()->toArray();
+        
+        
+        foreach ($grupy as $grupa) {
+            if($grupa['nazwa']!="admins")
+            $wybierzGrupe[$grupa['idGrupy']] = $grupa['nazwa'];
+        }
+        
+        
+        
+        
         $this->addElement(new Zend_Form_Element_Select('Grupy_idGrupy',
                         array(
                             'label' => 'Grupa',
-                            'multiOptions' => array(
-                                '1' => 'Grupa 1',
-                                '2' => 'Grupa 2',
-                                '3' => 'Grupa 3',
-                            ),
+                            'multiOptions' => $wybierzGrupe,
                             'required' => true
                 )));
 
