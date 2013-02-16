@@ -27,3 +27,6 @@ Miejsca do ogarniecia z podstaw Zend-a:
 paralele
 
 hey
+
+
+proba
