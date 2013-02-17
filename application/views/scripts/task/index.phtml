@@ -1,0 +1,21 @@
+<div class="post1">
+    <div class="title">
+        <h2>Lista Zadań</h2>
+    </div>
+
+    <p> <?php echo $this->paginationControl($this->paginator, 'Sliding', 'paginator/paginator.phtml'); ?> </p>
+    <table class="standard">
+        <tr>
+            <th>Nr.</th>
+            <th>Treść</th>
+            <th>Punkty</th>
+        </tr>
+        <?php foreach ($this->paginator as $zadanie) : ?> 
+                <tr class="<?= $this->cycle(array("light", "dark"))->next() ?>">
+                    <td><?= $zadanie['idZadania']; ?></td>
+                    <td><?= substr($zadanie['tresc'], 0, 50); ?></td>
+                    <td><?= $zadanie['punkty']; ?></td>
+                </tr>
+            <?php endforeach; ?>
+    </table>
+</div>

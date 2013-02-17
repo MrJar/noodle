@@ -21,18 +21,27 @@ class Application_Form_AddTest extends Zend_Form {
         $this->addElement(new Zend_Form_Element_Text('Nazwa_testu', 
                 array(
                     'label' => 'Nazwa testu',
+                    'validators' => array(
+                                'NotEmpty'
+                            ),
                     'require' => true
                 )));
         
         $this->addElement(new Zend_Form_Element_Text('data_od', 
                 array(
                     'label' => 'Data rozpoczecia dostępności testu',
+                    'validators' => array(
+                                'NotEmpty'
+                            ),
                     'require' => true
                 )));
         
         $this->addElement(new Zend_Form_Element_Text('data_do', 
                 array(
                     'label' => 'Data zakończenie dostępności testu',
+                    'validators' => array(
+                                'NotEmpty'
+                            ),
                     'require' => false
                 )));
         
