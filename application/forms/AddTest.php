@@ -2,8 +2,19 @@
 
 class Application_Form_AddTest extends Zend_Form {
 
+    private $_idTesty = null;
+
+    public function __construct($options = null) {
+        $this->_idTesty = $options['id'];
+        parent::__construct();
+    }
+    
     public function init() {
-        $this->setAction('/tests/add')->setMethod('post');
+        if ($this->_idTesty != null) {
+            $this->setAction('/tests/edit/?id='.$this->_idTesty)->setMethod('post');
+        } else {
+            $this->setAction('/tests/add')->setMethod('post');
+        }
 
         $zadania = Application_Model_ZadaniaTable::getInstance()->findAll();
         

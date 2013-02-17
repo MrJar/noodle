@@ -16,4 +16,14 @@ class Application_Model_UzytkownicyHas_TestyTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Application_Model_UzytkownicyHas_Testy');
     }
+    
+    public function getByIdUzytkownicyAndIdTesty($idUzytkownicy, $idTesty)
+    {
+        $query = Doctrine_Query::create()
+                ->from('Application_Model_UzytkownicyHas_Testy')
+                ->addWhere('Uzytkownicy_idUzytkownicy = ?', $idUzytkownicy)
+                ->addWhere('Testy_idTesty = ?', $idTesty);
+        
+        return $query->execute();
+    }
 }

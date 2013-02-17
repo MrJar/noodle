@@ -109,6 +109,7 @@ class TestsController extends Noodle_Controller_Action
                 $test->Przedmioty_idPrzedmioty = $params['Przedmioty_idPrzedmioty'];
                 $test->save();
                 
+                // mozna lepiej
                 $uzytkownicyHas_Przedmioty = Application_Model_UzytkownicyHas_PrzedmiotyTable::getInstance()->findAll();
                 foreach ($uzytkownicyHas_Przedmioty as $user) {
                     if ($user->Przedmioty_idPrzedmioty == $params['Przedmioty_idPrzedmioty']) {
@@ -137,6 +138,88 @@ class TestsController extends Noodle_Controller_Action
         }
         
         $this->view->addTestForm = $addTestForm;
+    }
+    
+    public function editAction()
+    {
+        if (!Noodle_View_Helper_IsCanAddTest::isCanAddTest()) {
+            $this->view->msg = "Nie mozesz edytować testu!";
+            return;
+        }
+        
+        $params = $this->_getAllParams();
+        $editTestForm = new Application_Form_AddTest($params);
+        
+        if ($this->getRequest()->isPost()) {
+            if ($editTestForm->isValid($params)) {
+                $test = Application_Model_TestyTable::getInstance()->findOneByIdTesty($params['id']);
+                
+                // jak ktoś zmienił przedmiot danego testu
+                if ($test->Przedmioty_idPrzedmioty != $params['Przedmioty_idPrzedmioty']) {
+                    
+                    // stare przypisanie usuwamy
+                    $uzytkownicyHas_PrzedmiotyTable = Application_Model_UzytkownicyHas_PrzedmiotyTable::getInstance();
+                    $uzytkownicyHas_PrzedmiotyOld = $uzytkownicyHas_PrzedmiotyTable->findByPrzedmioty_idPrzedmioty($test->Przedmioty_idPrzedmioty);
+                    foreach ($uzytkownicyHas_PrzedmiotyOld as $user) {
+                        $uzytkownicyHas_Testy = Application_Model_UzytkownicyHas_TestyTable::getInstance();
+                        $userTest = $uzytkownicyHas_Testy->getByIdUzytkownicyAndIdTesty($user->Uzytkownicy_idUzytkownicy, $test->idTesty);
+                        $userTest->delete();
+                    }
+                    
+                    // tworzymy nowe przypisania userow ktorzy maja miec testy
+                    $uzytkownicyHas_Przedmioty = $uzytkownicyHas_PrzedmiotyTable->findByPrzedmioty_idPrzedmioty($params['Przedmioty_idPrzedmioty']);
+                    foreach ($uzytkownicyHas_Przedmioty as $user) {
+                        $uzytkownicyHas_Testy = new Application_Model_UzytkownicyHas_Testy();
+                        $uzytkownicyHas_Testy->Uzytkownicy_idUzytkownicy = $user->Uzytkownicy_idUzytkownicy;
+                        $uzytkownicyHas_Testy->Testy_idTesty = $test->idTesty;
+                        $uzytkownicyHas_Testy->save();
+                    }
+                }
+                
+                // mozna lepiej
+                // zmiana przypisania zadan
+                $testyHas_ZadaniaTable = Application_Model_TestyHas_ZadaniaTable::getInstance()->findByTesty_idTesty($test->idTesty);
+                foreach ($testyHas_ZadaniaTable as $testy) {
+                    $testy->delete();
+                }
+                
+                $zadania = Application_Model_ZadaniaTable::getInstance()->findAll();
+                foreach ($zadania as $zadanie) {
+                    if ($params['zadanie_'.$zadanie->idZadania]) {
+                        $testyHas_Zadania = new Application_Model_TestyHas_Zadania();
+                        $testyHas_Zadania->Testy_idTesty = $test->idTesty;
+                        $testyHas_Zadania->Zadania_idZadania = $zadanie->idZadania;
+                        $testyHas_Zadania->save();
+                    }
+                }
+                // koniec zmiana przypisania zadan
+                
+                // na koncu zapis samego testu
+                $test->Nazwa_testu = $params['Nazwa_testu'];
+                $test->data_od = $params['data_od'];
+                $test->data_do = $params['data_do'];
+                $test->Przedmioty_idPrzedmioty = $params['Przedmioty_idPrzedmioty'];
+                $test->save();
+                
+            } else {
+                $editTestForm->setDefaults($params);
+                $this->view->editTestForm = $editTestForm;
+                return;
+            }
+        } else {
+            $test = Application_Model_TestyTable::getInstance()->findOneByIdTesty($params['id'])->toArray();
+            $zadaniaForTest = Application_Model_TestyHas_ZadaniaTable::getInstance()->findByTesty_idTesty($params['id']);
+
+            $zadaniaChecked = array();
+            foreach ($zadaniaForTest as $zadanieForTest) {
+                $zadaniaChecked['zadanie_'.$zadanieForTest->Zadania_idZadania] = true;
+            }
+
+            $test = array_merge($test, $zadaniaChecked);
+            
+            $editTestForm->setDefaults($test);
+        }
+        $this->view->editTestForm = $editTestForm;
     }
     
     public function genAction()
