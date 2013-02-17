@@ -75,7 +75,9 @@ class Application_Form_Register2 extends Zend_Form {
                                 '1' => 'Student',
                             ),
                             'required' => true
+                           
                 )));
+        
               $grupy = Application_Model_GrupyTable::getInstance()->findAll()->toArray();
         
         
@@ -93,7 +95,7 @@ class Application_Form_Register2 extends Zend_Form {
                             'multiOptions' => $wybierzGrupe,
                             'required' => true
                 )));
-
+      
 
 
         $this->addElement('submit', 'Zarejestruj', array(

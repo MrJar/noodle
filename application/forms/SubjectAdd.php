@@ -26,16 +26,21 @@ class Application_Form_SubjectAdd extends Zend_Form {
         $this->kierunek->getValidator('NotEmpty')->setMessages(array(
             Zend_Validate_NotEmpty::IS_EMPTY => "Wartość jest wymagana i nie może być pusta"
         ));
-        $this->addElement(new Zend_Form_Element_Text('grupa',
+        
+       $grupy = Application_Model_GrupyTable::getInstance()->findAll()->toArray();
+        
+        
+        foreach ($grupy as $grupa) {
+            if($grupa['nazwa']!="admins")
+            $wybierzGrupe[$grupa['idGrupy']] = $grupa['nazwa'];
+        }
+        $this->addElement(new Zend_Form_Element_Select('grupa',
                         array(
                             'label' => 'Grupa',
-                            'validators' => array(
-                                'NotEmpty'), 
+                            'multiOptions' => $wybierzGrupe, 
                             'required' => true
                 )));
-        $this->grupa->getValidator('NotEmpty')->setMessages(array(
-            Zend_Validate_NotEmpty::IS_EMPTY => "Wartość jest wymagana i nie może być pusta"
-        ));
+       
         
         $this->addElement('submit', 'Zarejestruj', array(
             'label' => 'Zarejestruj',

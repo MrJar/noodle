@@ -103,6 +103,7 @@ $(function() {
                         echo '<li><a href="' . $this->url(array('controller' => 'register', 'action' => 'index')) . '">Rejestracja użytkownika</a></li>';
                         echo '<li><a href="' . $this->url(array('controller' => 'subject', 'action' => 'index')) . '">Rejestracja przedmiotu</a></li>';
                         echo '<li><a href="' . $this->url(array('controller' => 'users', 'action' => 'student')) . '">Lista studentów</a></li>';
+                        echo '<li><a href="' . $this->url(array('controller' => 'users', 'action' => 'search')) . '">Szukaj studentów</a></li>';
                     }
 
                     if ($auth['rola'] == Application_Model_Uzytkownicy::ROLE_ADMIN) {
@@ -110,6 +111,7 @@ $(function() {
                         echo '<li><a href="' . $this->url(array('controller' => 'register', 'action' => 'index')) . '">Rejestracja użytkownika</a></li>';
                          echo '<li><a href="' . $this->url(array('controller' => 'users', 'action' => 'student')) . '">Lista studentów</a></li>';
                           echo '<li><a href="' . $this->url(array('controller' => 'users', 'action' => 'lecturer')) . '">Lista wykładowców</a></li>';
+                          echo '<li><a href="' . $this->url(array('controller' => 'users', 'action' => 'search')) . '">Szukaj studentów</a></li>';
                     }
                 }
                 ?>

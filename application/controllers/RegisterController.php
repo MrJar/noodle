@@ -29,19 +29,32 @@ class RegisterController extends Noodle_Controller_Action {
         $params = $this->_getAllParams();
         $form = $this->_formularze();
         if ($form->isValid($params)) {
-            $uzytkownik = new Application_Model_Uzytkownicy();
-            $uzytkownik->login = $params['login'];
-            $uzytkownik->haslo = sha1($params['haslo']);
+            $model = Application_Model_UzytkownicyTable::getInstance();
+            $us = $model->findByLogin($params['login']);
+            $us=$us->toArray();
+            if(count($us) == 0) {
+                $uzytkownik = new Application_Model_Uzytkownicy();
 
-            $uzytkownik->email = $params['email'];
-            $uzytkownik->rola = $params['rola'];
-            $uzytkownik->Grupy_idGrupy = $params['Grupy_idGrupy'];
-            $uzytkownik->save();
+                $uzytkownik->login = $params['login'];
+                $uzytkownik->haslo = sha1($params['haslo']);
+
+                $uzytkownik->email = $params['email'];
+                $uzytkownik->rola = $params['rola'];
+                $uzytkownik->Grupy_idGrupy = $params['Grupy_idGrupy'];
+                $uzytkownik->save();
+            }
+            else{
+              $form->login->addError("Użytkownik o takim loginie istnieje");
+              $this->view->form =$form;
+              $this->_helper->viewRenderer->setNoController(true);
+              $this->_helper->viewRenderer('register/index');
+              
+            }
         } else {
             
-           $this->view->form =$form;
-            $this->_helper->viewRenderer->setNoController(true);
-            $this->_helper->viewRenderer('register/index');
+            $this->view->form =$form;
+             $this->_helper->viewRenderer->setNoController(true);
+             $this->_helper->viewRenderer('register/index');
         }
     }
 

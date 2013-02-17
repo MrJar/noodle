@@ -78,6 +78,7 @@ class Application_Form_Register extends Zend_Form {
                                 '2' => 'Wykładowca',
                             ),
                             'required' => true
+                            
                 )));
         
         $grupy = Application_Model_GrupyTable::getInstance()->findAll()->toArray();

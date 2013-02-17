@@ -15,8 +15,8 @@ class UsersController extends Noodle_Controller_Action {
 
         $testTable = Application_Model_UzytkownicyTable::getInstance();
         $test = $testTable->findBy('rola', 1);
-        $lala = $test->toArray();
-        $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Array($lala));
+        $adapter=$test->toArray();
+        $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Array($adapter));
         $paginator->setItemCountPerPage(10);
         $page = $this->_request->getParam('strona', 1);
         $paginator->setCurrentPageNumber($page);
@@ -27,8 +27,8 @@ class UsersController extends Noodle_Controller_Action {
 
         $testTable = Application_Model_UzytkownicyTable::getInstance();
         $test = $testTable->findBy('rola', 2);
-        $lala = $test->toArray();
-        $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Array($lala));
+        $adapter=$test->toArray();
+        $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Array($adapter));
         $paginator->setItemCountPerPage(10);
         $page = $this->_request->getParam('strona', 1);
         $paginator->setCurrentPageNumber($page);
@@ -44,11 +44,9 @@ class UsersController extends Noodle_Controller_Action {
         $params = $this->_getAllParams();
         $form->setAction('/users/editstudent/id/' . $this->_request->getParam('id'))
                 ->setMethod('post');
-     
-       
+
+
         if ($this->getRequest()->isPost()) {
-
-
             if ($form->isValid($params)) {
                 $user->login = $params['login'];
                 $user->email = $params['email'];
@@ -67,22 +65,20 @@ class UsersController extends Noodle_Controller_Action {
         }
         $this->view->form = $form;
     }
-    
+
     public function deletestudentAction() {
         $id = $this->_request->getParam('id');
         $modelUzytkownicy = Application_Model_UzytkownicyTable::getInstance();
-       $user = $modelUzytkownicy->find($id);
+        $user = $modelUzytkownicy->find($id);
         if ($user) {
             $user->idUzytkownicy = $id;
             $user->delete();
+        }
 
-}
-        
         return $this->_redirect('/users/student');
     }
 
-    
-        public function editlecturerAction() {
+    public function editlecturerAction() {
         // pobieramy parametr z adresu
         $id = $this->_request->getParam('id');
         $modelUzytkownicy = Application_Model_UzytkownicyTable::getInstance();
@@ -95,13 +91,6 @@ class UsersController extends Noodle_Controller_Action {
         $form->removeElement('haslo');
         $form->removeElement('haslo2');
         if ($this->getRequest()->isPost()) {
-
-            $email = $form->getValue('email');
-            $login = $form->getValue('login');
-
-            $rola = $form->getValue('rola');
-            $Grupy_idGrupy = $form->getValue('Grupy_idGrupy');
-
             if ($form->isValid($params)) {
                 $user->login = $params['login'];
                 $user->email = $params['email'];
@@ -120,24 +109,45 @@ class UsersController extends Noodle_Controller_Action {
         }
         $this->view->form = $form;
     }
-    
+
     public function deletelecturerAction() {
         $id = $this->_request->getParam('id');
         $modelUzytkownicy = Application_Model_UzytkownicyTable::getInstance();
-       $user = $modelUzytkownicy->find($id);
+        $user = $modelUzytkownicy->find($id);
         if ($user) {
             $user->idUzytkownicy = $id;
             $user->delete();
+        }
 
-}
-        
         return $this->_redirect('/users/lecturer');
     }
 
-    
-    
-               
+    public function searchAction() {
 
+        $this->view->form = new Application_Form_SearchUser();
+        if ($this->getRequest()->isPost() || ($this->getRequest()->isGet() && $this->getRequest()->getParam('Szukaj')!==NULL)) {
+            $this->view->ispost = 'post';
+            $params = $this->_getAllParams();
+
+            if ($params['search'] == "login") {
+                $model = Application_Model_UzytkownicyTable::getInstance();
+                $users = $model->findByLogin($params['param']);
+            } elseif ($params['search'] == "grupa") {
+                $model = Application_Model_UzytkownicyTable::getInstance();
+                $users = $model->findByGrupy_idGrupy($params['param']);
+            } elseif ($params['search'] == "rola") {
+                $model = Application_Model_UzytkownicyTable::getInstance();
+                $users = $model->findByRola($params['param']);
+            }
+
+            $adapter= $users->toArray();
+            $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Array($adapter));
+            $paginator->setItemCountPerPage(10);
+            $page = $this->_request->getParam('strona', 1);
+            $paginator->setCurrentPageNumber($page);
+            $this->view->paginator = $paginator;
+        }
+    }
 
 }
 
