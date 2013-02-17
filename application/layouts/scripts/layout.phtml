@@ -100,13 +100,14 @@ $(function() {
 
                     if ($auth['rola'] == Application_Model_Uzytkownicy::ROLE_LECTURER) {
 
-                        echo '<li><a href="' . $this->url(array('controller' => 'register', 'action' => 'index')) . '">Rejestracja</a></li>';
+                        echo '<li><a href="' . $this->url(array('controller' => 'register', 'action' => 'index')) . '">Rejestracja użytkownika</a></li>';
+                        echo '<li><a href="' . $this->url(array('controller' => 'subject', 'action' => 'index')) . '">Rejestracja przedmiotu</a></li>';
                         echo '<li><a href="' . $this->url(array('controller' => 'users', 'action' => 'student')) . '">Lista studentów</a></li>';
                     }
 
                     if ($auth['rola'] == Application_Model_Uzytkownicy::ROLE_ADMIN) {
 
-                        echo '<li><a href="' . $this->url(array('controller' => 'register', 'action' => 'index')) . '">Rejestracja</a></li>';
+                        echo '<li><a href="' . $this->url(array('controller' => 'register', 'action' => 'index')) . '">Rejestracja użytkownika</a></li>';
                          echo '<li><a href="' . $this->url(array('controller' => 'users', 'action' => 'student')) . '">Lista studentów</a></li>';
                           echo '<li><a href="' . $this->url(array('controller' => 'users', 'action' => 'lecturer')) . '">Lista wykładowców</a></li>';
                     }
@@ -120,6 +121,8 @@ $(function() {
                     ?>
                 <?php endif; ?>
             </ul>
+            </li>
+            <li id="categories">
             <h2>Twoje testy</h2>
             <ul>
             <?php if ($this->isCanAddTest) : ?>
@@ -138,6 +141,7 @@ $(function() {
                 <?php endif; ?>
                 //
             </ul>
+            
         </li>
         <li id="calendar">
             <h2>Kalendarz</h2>

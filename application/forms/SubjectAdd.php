@@ -12,6 +12,9 @@ class Application_Form_SubjectAdd extends Zend_Form {
                                 'NotEmpty'), 
                             'required' => true
                 )));
+        $this->nazwa->getValidator('NotEmpty')->setMessages(array(
+            Zend_Validate_NotEmpty::IS_EMPTY => "Wartość jest wymagana i nie może być pusta"
+        ));
         $this->addElement(new Zend_Form_Element_Text('kierunek',
                         array(
                             'label' => 'Kierunek',
@@ -19,6 +22,10 @@ class Application_Form_SubjectAdd extends Zend_Form {
                                 'NotEmpty'), 
                             'required' => true
                 )));
+        
+        $this->kierunek->getValidator('NotEmpty')->setMessages(array(
+            Zend_Validate_NotEmpty::IS_EMPTY => "Wartość jest wymagana i nie może być pusta"
+        ));
         $this->addElement(new Zend_Form_Element_Text('grupa',
                         array(
                             'label' => 'Grupa',
@@ -26,9 +33,12 @@ class Application_Form_SubjectAdd extends Zend_Form {
                                 'NotEmpty'), 
                             'required' => true
                 )));
+        $this->grupa->getValidator('NotEmpty')->setMessages(array(
+            Zend_Validate_NotEmpty::IS_EMPTY => "Wartość jest wymagana i nie może być pusta"
+        ));
         
-        $this->addElement('submit', 'add', array(
-            'label' => 'Dodaj',
+        $this->addElement('submit', 'Zarejestruj', array(
+            'label' => 'Zarejestruj',
             'required' => true
         ));
         

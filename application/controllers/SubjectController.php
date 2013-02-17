@@ -7,21 +7,29 @@ class SubjectController extends Noodle_Controller_Action {
     }
     
     public function indexAction() {
-  
+   
+        $this->view->form =new Application_Form_SubjectAdd();
     }
     
     public function addAction() {
-        
+        $form = new Application_Form_SubjectAdd();
         $params = $this->_getAllParams();
-        $subject = new Application_Model_Przedmioty();
-        $subject->nazwa = $params['nazwa'];
-        $subject->kierunek = $params['kierunek'];
-        $subject->grupa = $params['grupa'];
-        $subject->save(); 
-        $this->view->msg = "Nowy przedmiot został dodany";
-        $this->view->addForm = new Application_Form_SubjectAdd();
-        
-    } 
+       
+        if ($form->isValid($params)) {
+            $subject = new Application_Model_Przedmioty();
+            $subject->nazwa = $params['nazwa'];
+            $subject->kierunek = $params['kierunek'];
+
+            $subject->grupa = $params['grupa'];
+         
+            $subject->save();
+        } else {
+            
+           $this->view->form =$form;
+            $this->_helper->viewRenderer->setNoController(true);
+            $this->_helper->viewRenderer('subject/index');
+        }
+        } 
     
     public function editAction() {
       

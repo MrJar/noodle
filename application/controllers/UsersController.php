@@ -11,9 +11,6 @@ class UsersController extends Noodle_Controller_Action {
         parent::init();
     }
 
-    public function indexAction() { //  $this->_helper->layout->disableLayout();
-    }
-
     public function studentAction() {
 
         $testTable = Application_Model_UzytkownicyTable::getInstance();
