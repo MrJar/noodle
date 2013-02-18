@@ -1,45 +1,32 @@
 <div class="post1">
-        <div class="title">
-            <h2>Lista Studnetów i Akcje</h2>
-
-        </div>
-
-        <p> <?php echo $this->paginationControl($this->paginator, 'Sliding', 'paginator/paginator.phtml');?> </p>
-<table class="standard">
-	  <tr>
-	    <th>idUzytkownicy</th>
-	    <th>Login</th>
-	    
-            <th>Email</th>
-            <th>Rola</th>
-            <th>Grupy_idGrupy</th>
-	    <th colspan="4">Akcje</th>
-	  </tr>
-           
-          
-<!--          if($value->rola == Application_Model_Uzytkownicy::ROLE_ADMIN) {-->
-
-
-
-	  <?php 
- foreach ($this->paginator as $value)  : if($value['rola'] == Application_Model_Uzytkownicy::ROLE_STUDENT) { ?>
-	    <tr class="<?php echo $this->cycle(array("light", "dark"))->next() ?>">
-	      <td><?= $value['idUzytkownicy']; ?></td>
-              <td><?= $value['login']; ?></td>
-	      
-              <td><?= $value['email']; ?></td>
-              <td><?= Application_Model_Uzytkownicy::$role[$value['rola']]; ?></td>
-              <td><?= $value['Grupy_idGrupy']; ?></td>
-	      <td><a href="/users/editstudent/id/<?php echo $value['idUzytkownicy']; ?>">Edycja</a></td>
-    
-	      <?php echo '<td><a href="/users/deletestudent/id/'. $value['idUzytkownicy'] .'" onclick="if(!confirm(\'Na pewno chcesz usunąć użytkownika : '.$value['login'].' ? \' )) return false;">Usuń</a></td>'; ?>
-	    </tr>
-	 <?php } endforeach; ?>
-	</table>
-
-
+    <div class="title">
+        <h2>Lista Studnetów i Akcje</h2>
 
     </div>
+
+    <p> <?php echo $this->paginationControl($this->paginator, 'Sliding', 'paginator/paginator.phtml'); ?> </p>
+    <table class="standard">
+        <tr>
+
+            <th>Login</th>
+
+            <th colspan="3" id"akc" >Akcje</th>
+        </tr>
+
+        <?php foreach ($this->paginator as $value) : if ($value['rola'] == Application_Model_Uzytkownicy::ROLE_STUDENT) { ?>
+                <tr class="<?php echo $this->cycle(array("light", "dark"))->next() ?>">
+                    <td ><?= $value['login']; ?></td>
+                    <td id="akcje"><a href="/users/select/id/<?php echo $value['idUzytkownicy']; ?>">Wiecej o użytkowniku</a></td>
+                    <td id="akcje"><a href="/users/editstudent/id/<?php echo $value['idUzytkownicy']; ?>">Edycja</a></td>
+
+                    <?php echo '<td id="akcje"><a href="/users/deletestudent/id/' . $value['idUzytkownicy'] . '" onclick="if(!confirm(\'Na pewno chcesz usunąć użytkownika : ' . $value['login'] . ' ? \' )) return false;">Usuń</a></td>'; ?>
+                </tr>
+            <?php } endforeach; ?>
+    </table>
+
+
+
+</div>
 
 
 

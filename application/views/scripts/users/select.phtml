@@ -1,0 +1,22 @@
+<div class="post">
+        <div class="title">
+            <h2>Dane użytkownika</h2>
+
+        </div>
+    
+
+    <hr/>
+   <?php $user = $this->user; ?>
+    <p id="centr">Login : <?= $user['login'] ?></p><br/><hr/>
+    <p id="centr">Email : <?= $user['email'] ?></p><br/><hr/>
+    <p id="centr">Rola : <?= Application_Model_Uzytkownicy::$role[$user['rola']]; ?></p><br/><hr/>
+    <p id="centr">Grupa : <?= $user['Grupy_idGrupy']; ?></p><hr/><br/>
+    <?php if($user['rola'] == Application_Model_Uzytkownicy::ROLE_STUDENT) { ?>
+    <p id="centrum"><a href="/users/student" >Powrót</a></p>
+    <?php } ?>
+    <?php if ($user['rola'] == Application_Model_Uzytkownicy::ROLE_LECTURER) { ?>
+    <p id="centrum"><a href="/users/lecturer" >Powrót</a></p>
+    <?php } ?>
+    
+    
+</div>

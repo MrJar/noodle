@@ -9,7 +9,34 @@
 root { 
     display: block;
 }
+p#centr{
+    
+        text-align: center;
+    font-size: 18px;
+    
+}
 
+p#centrum{
+    
+        text-align: center;
+
+    
+}
+
+
+hr {
+        border: 0;
+    height: 1px;
+    background: #333;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,hsla(0,0%,0%,0)), color-stop(50%,hsla(0,0%,0%,.35)), color-stop(100%,hsla(0,0%,0%,0)));
+    background: -webkit-linear-gradient(left, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,.35) 50%, hsla(0,0%,0%,0) 100%);
+    background:    -moz-linear-gradient(left, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,.35) 50%, hsla(0,0%,0%,0) 100%);
+    background:     -ms-linear-gradient(left, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,.35) 50%, hsla(0,0%,0%,0) 100%);
+    background:      -o-linear-gradient(left, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,.35) 50%, hsla(0,0%,0%,0) 100%);
+    background:         linear-gradient(left, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,.35) 50%, hsla(0,0%,0%,0) 100%);
+}
 
 input#Zaloguj{
     -moz-box-shadow:inset 0px 1px 0px 0px #dcecfb;
@@ -87,7 +114,7 @@ input#Zarejestruj,input#Szukaj{
 table {
     margin: 10px 0;
     border: #999 1px solid;
-    width:600px;
+    width: 600px;
 }
 
 table.standard th {
@@ -96,12 +123,28 @@ table.standard th {
     padding: 5px 3px;
 }
 
-table.standard td {
-    border-top: #999 1px solid;
+table.standard th#akc {
+    background: #CCCCCC;
+    font-weight: bold;
     padding: 5px 3px;
-    text-align:center
+ 
 }
 
+
+
+table.standard td {
+    border-top: #999 1px solid;
+    padding: 5px 1px;
+    text-align:center;
+    width: 70%;
+}
+
+table.standard td#akcje {
+    border-top: #999 1px solid;
+    padding: 5px 10px;
+  
+    text-align:center
+}
 table.standard tr.dark {
     background: #EEEEEE;
 }

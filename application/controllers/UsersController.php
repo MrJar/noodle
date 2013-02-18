@@ -121,6 +121,18 @@ class UsersController extends Noodle_Controller_Action {
 
         return $this->_redirect('/users/lecturer');
     }
+    
+    public function selectAction(){
+        
+        $id = $this->_request->getParam('id');
+        $modelUzytkownicy = Application_Model_UzytkownicyTable::getInstance();
+        $user= $modelUzytkownicy->findOneByidUzytkownicy($id);
+        $user->toArray();
+        $this->view->user=$user;
+     
+      
+  
+    }
 
     public function searchAction() {
 
@@ -141,6 +153,8 @@ class UsersController extends Noodle_Controller_Action {
             }
 
             $adapter= $users->toArray();
+            if(count($adapter)==0) $this->view->wiadomosc = 'Szukany użytkownik nie istnieje';
+
             $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Array($adapter));
             $paginator->setItemCountPerPage(10);
             $page = $this->_request->getParam('strona', 1);
