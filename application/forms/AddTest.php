@@ -24,7 +24,7 @@ class Application_Form_AddTest extends Zend_Form {
                     'validators' => array(
                                 'NotEmpty'
                             ),
-                    'require' => true
+                    'required' => true
                 )));
         
         $this->addElement(new Zend_Form_Element_Text('data_od', 
@@ -33,7 +33,7 @@ class Application_Form_AddTest extends Zend_Form {
                     'validators' => array(
                                 'NotEmpty'
                             ),
-                    'require' => true
+                    'required' => true
                 )));
         
         $this->addElement(new Zend_Form_Element_Text('data_do', 
@@ -42,7 +42,7 @@ class Application_Form_AddTest extends Zend_Form {
                     'validators' => array(
                                 'NotEmpty'
                             ),
-                    'require' => false
+                    'required' => false
                 )));
         
         foreach ($zadania as $zadanie) {

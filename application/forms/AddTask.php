@@ -12,8 +12,10 @@ class Application_Form_AddTask extends Zend_Form {
     public function init() {
         if ($this->_idTask != null) {
             $this->setAction('/task/edit/?id='.$this->_idTask)->setMethod('post');
+            $labelForSubmit = 'Zapisz';
         } else {
             $this->setAction('/task/add')->setMethod('post');
+            $labelForSubmit = 'Dodaj';
         }
         
         $this->addElement(new Zend_Form_Element_Text('tresc', 
@@ -22,7 +24,7 @@ class Application_Form_AddTask extends Zend_Form {
                     'validators' => array(
                                 'NotEmpty'
                             ),
-                    'require' => true
+                    'required' => true
                 )));
         $this->tresc->getValidator('NotEmpty')->setMessages(array(
             Zend_Validate_NotEmpty::IS_EMPTY => "Wartość jest wymagana i nie może być pusta"
@@ -32,11 +34,11 @@ class Application_Form_AddTask extends Zend_Form {
                 array(
                     'label' => 'Rozwiazanie',
                     'validators' => array(
-                                'NotEmpty'
+                                'NotEmpty',
                             ),
-                    'require' => true
+                    'required' => true
                 )));
-        $this->tresc->getValidator('NotEmpty')->setMessages(array(
+        $this->rozwiazanie->getValidator('NotEmpty')->setMessages(array(
             Zend_Validate_NotEmpty::IS_EMPTY => "Wartość jest wymagana i nie może być pusta"
         ));
         
@@ -46,17 +48,24 @@ class Application_Form_AddTask extends Zend_Form {
                     'validators' => array(
                                 'NotEmpty'
                             ),
-                    'require' => true
+                    'required' => true
                 )));
+        $this->danetestowe->getValidator('NotEmpty')->setMessages(array(
+            Zend_Validate_NotEmpty::IS_EMPTY => "Wartość jest wymagana i nie może być pusta"
+        ));
         
-        $this->addElement(new Zend_Form_Element_Text('wynik', 
+        $this->addElement(new Zend_Form_Element_Text('wyniki', 
                 array(
                     'label' => 'Wynik',
                     'validators' => array(
                                 'NotEmpty'
                             ),
-                    'require' => true
+                    'required' => true
                 )));
+        $this->wyniki->getValidator('NotEmpty')->setMessages(array(
+            Zend_Validate_NotEmpty::IS_EMPTY => "Wartość jest wymagana i nie może być pusta"
+        ));
+        
         
         $this->addElement(new Zend_Form_Element_Text('punkty', 
                 array(
@@ -64,8 +73,11 @@ class Application_Form_AddTask extends Zend_Form {
                     'validators' => array(
                                 'NotEmpty'
                             ),
-                    'require' => true
+                    'required' => true
                 )));
+        $this->punkty->getValidator('NotEmpty')->setMessages(array(
+            Zend_Validate_NotEmpty::IS_EMPTY => "Wartość jest wymagana i nie może być pusta"
+        ));
         
         $przedmioty = Application_Model_PrzedmiotyTable::getInstance()->findAll()->toArray();
         
@@ -82,7 +94,7 @@ class Application_Form_AddTask extends Zend_Form {
                 )));
         
         $this->addElement('submit', 'Dodaj', array(
-            'label' => 'Dodaj',
+            'label' => $labelForSubmit,
             'required' => true
         ));
     }

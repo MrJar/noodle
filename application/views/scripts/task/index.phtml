@@ -6,15 +6,17 @@
     <p> <?php echo $this->paginationControl($this->paginator, 'Sliding', 'paginator/paginator.phtml'); ?> </p>
     <table class="standard">
         <tr>
-            <th>Nr.</th>
             <th>Treść</th>
             <th>Punkty</th>
+            <th>Edytuj</th>
+            <th>Usuń</th>
         </tr>
         <?php foreach ($this->paginator as $zadanie) : ?> 
                 <tr class="<?= $this->cycle(array("light", "dark"))->next() ?>">
-                    <td><?= $zadanie['idZadania']; ?></td>
                     <td><?= substr($zadanie['tresc'], 0, 50); ?></td>
                     <td><?= $zadanie['punkty']; ?></td>
+                    <td><a href="/task/edit/?id=<?= $zadanie['idZadania']; ?>">edytuj</a></td>
+                    <td><a href="/task/delete/?id=<?= $zadanie['idZadania']; ?>">usuń</a></td>
                 </tr>
             <?php endforeach; ?>
     </table>

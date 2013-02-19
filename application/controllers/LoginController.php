@@ -37,15 +37,8 @@ class LoginController extends Noodle_Controller_Action {
 
                 $auth = Zend_Auth::getInstance();
                 $auth->getStorage()->write(array('login' => $user->login, 'idUzytkownicy' => $user->idUzytkownicy, 'rola' => $user->rola));
-
-
-                //Zend_Debug::dump($test['rola'], $label = null, $echo = true);
-                //Zend_Debug::dump($auth->getStorage()->read(), $label = null, $echo = true);
-                //$grupy = new Application_Model_GrupyTable();
-                //Zend_Debug::dump($grupy -> fetchAll(), $label = null, $echo = true);
                 $this->_redirect('/');
             }
-            $loginForm->haslo->addError('Błędna próba logowania!');
         }
 
       
