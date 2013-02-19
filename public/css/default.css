@@ -76,7 +76,14 @@ input#Zaloguj:active {
     top:1px;
 }
 
-input#Zarejestruj,input#Szukaj{
+input#Zaloguj,input#Szukaj,input#Zapisz{
+    
+    width:110px;
+    
+}
+
+
+input#Zarejestruj,input#Szukaj,input#Zapisz{
     -moz-box-shadow:inset 0px 1px 0px 0px #dcecfb;
     -webkit-box-shadow:inset 0px 1px 0px 0px #dcecfb;
     box-shadow:inset 0px 1px 0px 0px #dcecfb;
@@ -159,6 +166,7 @@ input#Zarejestruj:hover{
     background:-moz-linear-gradient( center top, #80b5ea 5%, #bddbfa 100% );
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#80b5ea', endColorstr='#bddbfa');
     background-color:#80b5ea;
+    
 }
 
 
@@ -167,9 +175,12 @@ input#Zarejestruj:active {
     top:1px;
 }
 
+input#Zarejestruj{
+    width:110px;
+}
 
 
-dt#login-label,dt#search-label, dt#param-label,dt#haslo-label,dt#kierunek-label,dt#grupa-label,dt#nazwa-label,dt#haslo2-label,dt#email-label,dt#grupa-label,dt#rola-label,dt#Grupy_idGrupy-label{
+dt{
 
     color:grey;
     font-size: 15px;
@@ -178,7 +189,7 @@ dt#login-label,dt#search-label, dt#param-label,dt#haslo-label,dt#kierunek-label,
 
 
 }
-input#login,input#param,input#kierunek,input#grupa,input#nazwa,input#haslo,input#haslo2, input#email,select#grupa, select#rola,select#Grupy_idGrupy{
+input,select{
 
     padding: 9px;  
     border: solid 1px #E5E5E5;  
@@ -200,12 +211,12 @@ input#login,input#param,input#kierunek,input#grupa,input#nazwa,input#haslo,input
 
 
 
-input#grupa:hover,input#kierunek:hover,input#param:hover,input#login:hover,input#nazwa:hover,input#haslo:hover,input#haslo2:hover,input#email:hover, select#grupa:hover,select#Grupy_idGrupy:hover{  
+input:hover,select:hover{  
     border-color: #C9C9C9;  
     -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px; 
 } 
 
-input#login:focus,input#nazwa:focus,input#kierunek:focus,input#param:focus,input#grupa:focus,input#haslo:focus,input#haslo2:focus,input#email:focus,select#grupa:focus, select#rola:focus,select#Grupy_idGrupy:focus{
+input:focus,select:focus{
 
     border: 1px solid #6AA2FD;
     -moz-box-shadow: 0 0 1px 1px #6AA2FD;
@@ -238,7 +249,7 @@ fieldset {
     border: none;
 }
 
-input, textarea {
+ textarea {
     padding: 5px;
     border: 1px solid #626262;
     font: normal 1em "Trebuchet MS", Arial, Helvetica, sans-serif;
