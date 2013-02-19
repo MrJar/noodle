@@ -12,6 +12,11 @@ class TaskController extends Noodle_Controller_Action
 
     public function indexAction()
     {
+        if (!$this->_canEditAddTask()) {
+            $this->view->msg = 'Nie możesz edytować, dodwać lub usuwać zadań';
+            return;
+        }
+        
         $zadania = Application_Model_ZadaniaTable::getInstance()->findAll()->toArray();
         $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Array($zadania));
         $paginator->setItemCountPerPage(self::TASK_PER_PAGE);
@@ -25,7 +30,7 @@ class TaskController extends Noodle_Controller_Action
     
     public function addAction()
     {
-        if ($this->_canEditAddTask()) {
+        if (!$this->_canEditAddTask()) {
             $this->view->msg = 'Nie możesz edytować, dodwać lub usuwać zadań';
             return;
         }
@@ -54,7 +59,7 @@ class TaskController extends Noodle_Controller_Action
     
     public function editAction()
     {
-        if ($this->_canEditAddTask()) {
+        if (!$this->_canEditAddTask()) {
             $this->view->msg = 'Nie możesz edytować, dodwać lub usuwać zadań';
             return;
         }
@@ -86,7 +91,7 @@ class TaskController extends Noodle_Controller_Action
     
     public function deleteAction()
     {
-        if ($this->_canEditAddTask()) {
+        if (!$this->_canEditAddTask()) {
             $this->view->msg = 'Nie możesz edytować, dodwać lub usuwać zadań';
             return;
         }

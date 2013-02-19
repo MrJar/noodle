@@ -625,7 +625,7 @@ img {
 
 /* Footer */
 
-#footer {
+.footer {
     clear: both;
     width: 950px;
     margin: 0 auto;
@@ -633,17 +633,20 @@ img {
     background: url(../images/img11.gif) no-repeat;
 }
 
-#footer p {
+.footer p {
     margin: 0 0 5px 0;
     text-align: center;
     line-height: normal;
     font-size: .9em;
 }
 
-#footer a {
+.footer a {
     text-decoration: none;
 }
 
+.footer.top {
+    padding: 3px 0;
+}
 
 /* formularz testu dla ucznia */
 #testForm {

@@ -100,11 +100,7 @@ $("#datepicker").datepicker({
 </div>
 <!-- end header -->
 <!-- star menu -->
-<div id="menu">
-	<ul>
-		<li class="current_page_item"><a href="/">Strona Główna</a></li>
-	
-	</ul>
+<div class="footer top">
 </div>
 <!-- end menu -->
 <!-- start page -->
@@ -164,7 +160,6 @@ $("#datepicker").datepicker({
                 <li><a href="/tests/list">Lista wszystkich test-ów</a></li>
                 <hr />
             <?php endif; ?>
-                //
                 <?php if (!empty($this->testForStudent)): ?>
                 <?php foreach ($this->testForStudent as $test) : ?>
                     <li><a href="/tests/?id=<?= $test->idTesty ?>"><?= $test->Nazwa_testu ?></a></li>
@@ -172,18 +167,22 @@ $("#datepicker").datepicker({
                 <?php else: ?>
                     Brak testów
                 <?php endif; ?>
-                //
             </ul>
             
         </li>
+        <?php $auth = Zend_Auth::getInstance()->getStorage()->read();
+        if ($auth['rola'] != Application_Model_Uzytkownicy::ROLE_STUDENT) : ?>
+        <li id="tasks">
+            <h2>Zadania</h2>
+            <ul>
+                <li><a href="/task/">Lista</a></li>
+                <li><a href="/task/add">Dodaj</a></li>
+            </ul>
+        </li>
+        <?php endif; ?>
         <li id="calendar">
             <h2>Kalendarz</h2>
-            
-                
-                   <div id="datepicker"></div>
-                    
-                
-           
+            <div id="datepicker"></div>
         </li>
 
     </ul>
@@ -193,14 +192,7 @@ $("#datepicker").datepicker({
 </div>
 <!-- end page -->
 <!-- start footer -->
-<div id="footer">
-	<p class="legal">
-		 </p>
-	<p class="links">
-		<a href="http://validator.w3.org/check/referer" class="xhtml" title="This page validates as XHTML">Valid <abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a>
-		&nbsp;&bull;&nbsp;
-		<a href="http://jigsaw.w3.org/css-validator/check/referer" class="css" title="This page validates as CSS">Valid <abbr title="Cascading Style Sheets">CSS</abbr></a>
-	</p>
+<div class="footer">
 </div>
 <!-- end footer -->
 </body>
