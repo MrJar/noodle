@@ -21,16 +21,46 @@ Description: Three-column blog design with the third column allocated for ads. F
 <script type="text/javascript" src="/jquery.min.js"></script>
 <link href="/css/normalize.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="/css/datepicker.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" rel="stylesheet" type="text/css" media="screen" />
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 <script src="/jquery.ui.datepicker-pl.js"></script>
 
 <script>
-$(function() {
-    $( "#datepicker" ).datepicker($.datepicker.regional['pl']);
+
+$(document).ready(function() {
+var Event = function (text, className) {
+    this.text = text;
+    this.className = className;
+};
+
+var events = {};
+    <?php   $daty = Application_Model_TestyTable::getInstance()->findAll()->toArray();
+    $auth = Zend_Auth::getInstance()->getStorage()->read();
+   if( $auth['rola'] != Application_Model_Uzytkownicy::ROLE_ADMIN && $auth['rola'] != NULL) {
+foreach ($daty as $data) :
+    echo 'events[new Date("'.$data['data_od'].'")] = new Event("Rozpoczęcie testu : '.$data['Nazwa_testu'] .'", "green");'; 
+    echo 'events[new Date("'.$data['data_do'].'")] = new Event("Zakończenie testu : '.$data['Nazwa_testu'] .'", "red");'; ?>        
+        <?php endforeach; } ?>
+
+
+console.dir(events);
+
+
+
+
+$("#datepicker").datepicker({
+    beforeShowDay: function (date) {
+        var event = events[date];
+        if (event) {
+            return [true, event.className, event.text];
+        } else {
+            return [true, '', ''];
+        }
+    }
+});
     
 });
-
   $(document).ready(function() {
   function myDate(){
   var now = new Date();
@@ -52,6 +82,7 @@ $(function() {
 } myDate(); setInterval(function(){ myDate();}, 1000); });
 
 </script>
+
 </head>
 <body>
 <!-- start header -->

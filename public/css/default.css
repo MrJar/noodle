@@ -6,6 +6,16 @@
         Purpose of the stylesheet follows.
 */
 
+.red > a { 
+    background-color: rgb(255,45,50) !important;
+    background-image:none !important;
+}
+
+.green > a { 
+    background-color: rgb(24,197,37) !important;
+    background-image: none !important;
+}
+
 root { 
     display: block;
 }
