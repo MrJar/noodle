@@ -92,6 +92,10 @@ input#Zaloguj,input#Szukaj,input#Zapisz{
     
 }
 
+input#search-login,input#search-grupa,input#search-rola{
+    
+   margin-right: -70px !important;;
+}
 
 input#Zarejestruj,input#Szukaj,input#Zapisz{
     -moz-box-shadow:inset 0px 1px 0px 0px #dcecfb;

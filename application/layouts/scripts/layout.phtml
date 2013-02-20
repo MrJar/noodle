@@ -36,12 +36,18 @@ var Event = function (text, className) {
 
 var events = {};
     <?php   $daty = Application_Model_TestyTable::getInstance()->findAll()->toArray();
+   
     $auth = Zend_Auth::getInstance()->getStorage()->read();
+   
+    
    if( $auth['rola'] != Application_Model_Uzytkownicy::ROLE_ADMIN && $auth['rola'] != NULL) {
 foreach ($daty as $data) :
+
     echo 'events[new Date("'.$data['data_od'].'")] = new Event("Rozpoczęcie testu : '.$data['Nazwa_testu'] .'", "green");'; 
-    echo 'events[new Date("'.$data['data_do'].'")] = new Event("Zakończenie testu : '.$data['Nazwa_testu'] .'", "red");'; ?>        
-        <?php endforeach; } ?>
+    echo 'events[new Date("'.$data['data_do'].'")] = new Event("Zakończenie testu : '.$data['Nazwa_testu'] .'", "red");'; ?>  
+            
+         
+        <?php  endforeach; } ?>
 
 
 console.dir(events);
