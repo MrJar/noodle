@@ -158,7 +158,7 @@ $("#datepicker").datepicker({
             </ul>
             </li>
         <?php $auth = Zend_Auth::getInstance()->getStorage()->read();
-        if ($auth != null && $auth['rola'] != Application_Model_Uzytkownicy::ROLE_STUDENT) : ?>
+        if ($auth != null ) : ?>
         <li id="categories">
             <h2>Twoje testy</h2>
             <ul>
