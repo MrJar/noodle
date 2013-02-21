@@ -1,13 +1,16 @@
 <?php
 
 class Application_Form_SubjectAdd extends Zend_Form {
+  
+    
     
     public function init() {
+        
        
         $this->setAction('/subject/add')->setMethod('post');
         $this->addElement(new Zend_Form_Element_Text('nazwa',
                         array(
-                            'label' => 'Nazwa',
+                            'label' => 'Nazwa przedmoitu',
                             'validators' => array(
                                 'NotEmpty'), 
                             'required' => true
@@ -43,7 +46,7 @@ class Application_Form_SubjectAdd extends Zend_Form {
        
         
         $this->addElement('submit', 'Zarejestruj', array(
-            'label' => 'Zarejestruj',
+            'label' => 'Dodaj',
             'required' => true
         ));
         

@@ -198,6 +198,16 @@ $("#datepicker").datepicker({
             </ul>
         </li>
         <?php endif; ?>
+		<?php $auth = Zend_Auth::getInstance()->getStorage()->read();
+        if ($auth['rola'] != Application_Model_Uzytkownicy::ROLE_STUDENT) : ?>
+        <li id="subject">
+            <h2>Przedmioty</h2>
+            <ul>
+                <li><a href="/subject/">Lista Przedmiotow</a></li>
+                <li><a href="/subject/add">Dodaj przedmiot</a></li>
+            </ul>
+        </li>
+        <?php endif; ?>
         <li id="calendar">
             <h2>Kalendarz</h2>
             <div id="datepicker"></div>

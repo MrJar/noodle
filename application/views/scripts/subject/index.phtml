@@ -1,8 +1,29 @@
-<div class="post">
-    <div class="title">
-        <h2>Dodanie przedmiotu</h2>
-
-    </div>
-    <?=$this->form;?>
-    </div>
-
+<p> <?php echo $this->paginationControl($this->paginator, 'Sliding', 'paginator/paginator.phtml'); ?> </p>
+<table class="standard">
+    <tr>
+            <th>Nazwa</th>
+            <th>Kierunek</th>
+            <th>Grupa</th>
+            <th>Edytuj</th>
+            <th>Usuń</th>
+     </tr>
+<?php foreach ($this->paginator as $przedmioty) : ?>
+        <tr class="<?= $this->cycle(array("light", "dark"))->next() ?>">
+            <td>
+                <?= $przedmioty['nazwa']; ?>
+            </td>
+            <td>
+                <?= $przedmioty['kierunek']; ?>
+            </td>
+            <td>
+                <?= $przedmioty['grupa']; ?>
+            </td>
+            <td>
+                <a href="/subject/edit/?idPrzedmioty=<?= $przedmioty['idPrzedmioty']; ?>">Edytuj</a></td>
+            </td>
+            <td>
+                <a href="/subject/delete/?idPrzedmioty=<?= $przedmioty['idPrzedmioty']; ?>">Usun</a>
+            </td>
+        </tr>
+<?php endforeach; ?>
+</table>
