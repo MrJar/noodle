@@ -11,12 +11,12 @@
             <th>Edytuj</th>
             <th>Usuń</th>
         </tr>
-        <?php foreach ($this->paginator as $zadanie) : ?> 
+        <?php foreach ($this->paginator as $test) : ?> 
                 <tr class="<?= $this->cycle(array("light", "dark"))->next() ?>">
-                    <td><?= substr($zadanie['tresc'], 0, 50); ?></td>
-                    <td><?= $zadanie['punkty']; ?></td>
-                    <td><a href="/task/edit/?id=<?= $zadanie['idZadania']; ?>">edytuj</a></td>
-                    <td><a href="/task/delete/?id=<?= $zadanie['idZadania']; ?>">usuń</a></td>
+                    <td><?= substr($test['tresc'], 0, 50); ?></td>
+                    <td><?= $test['punkty']; ?></td>
+                    <td><a href="/task/edit/?id=<?= $test['idZadania']; ?>">edytuj</a></td>
+                    <td><a href="/task/delete/?id=<?= $test['idZadania']; ?>">usuń</a></td>
                 </tr>
             <?php endforeach; ?>
     </table>

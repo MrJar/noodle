@@ -41,4 +41,13 @@ class Application_Model_TestySprawdzoneTable extends Doctrine_Table
         return $query->fetchArray();
 
     }
+    
+    public function getUncheckedTests()
+    {
+        $query = Doctrine_Query::create()                    
+                ->from('Application_Model_TestySprawdzone as Testy_Sprawdzone')
+                ->andWhere('zdobyte_punkty != ?', '-1');
+        
+        $query->execute();
+    }
 }   

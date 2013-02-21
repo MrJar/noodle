@@ -7,6 +7,8 @@
 class TestsController extends Noodle_Controller_Action
 {
     
+    const TEST_PER_PAGE = 10;
+    
     public function init()
     {
         parent::init();
@@ -26,6 +28,21 @@ class TestsController extends Noodle_Controller_Action
     public function listAction()
     {
         $this->view->tests = Application_Model_TestyTable::getInstance()->findAll();
+    }
+    
+    public function pointsAction()
+    {
+        $auth = Zend_Auth::getInstance()->getIdentity();
+        $tests = Application_Model_TestySprawdzoneTable::getInstance()->findByUzytkownicy_idUzytkownicy($auth['idUzytkownicy']);
+        
+        $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Array($tests->toArray()));
+        $paginator->setItemCountPerPage(self::TEST_PER_PAGE);
+        $page = $this->_request->getParam('strona');
+        if (!isset($page)) {
+            $page = 1;
+        }
+        $paginator->setCurrentPageNumber($page);
+        $this->view->tests = $paginator;
     }
 
     public function rozwiazAction()

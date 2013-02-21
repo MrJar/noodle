@@ -38,13 +38,16 @@ class IndexController extends Noodle_Controller_Action
         
         //$return = $ideone->createSubmission($sourceCode, $language, $input, $run, $private);
         
+        //var_dump($return);
+        
         //$link = "kVH0iG";
         //$link = "KpEBnJ";
         //$link = "8xHbK7";
         //$link = "aWwWPB";
         //$link = "1KREJ6";
+        $link = "VMqnUy";
         
-        //var_dump($ideone->getSubmissionStatus($link));
+        var_dump($ideone->getSubmissionStatus($link));
         //echo "<hr />";
         
         $withSource = true;

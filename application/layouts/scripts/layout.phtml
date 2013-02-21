@@ -157,7 +157,9 @@ $("#datepicker").datepicker({
                 <?php endif; ?>
             </ul>
             </li>
-            <li id="categories">
+        <?php $auth = Zend_Auth::getInstance()->getStorage()->read();
+        if ($auth != null && $auth['rola'] != Application_Model_Uzytkownicy::ROLE_STUDENT) : ?>
+        <li id="categories">
             <h2>Twoje testy</h2>
             <ul>
             <?php if ($this->isCanAddTest) : ?>
@@ -176,13 +178,23 @@ $("#datepicker").datepicker({
             </ul>
             
         </li>
+        <?php endif; ?>
         <?php $auth = Zend_Auth::getInstance()->getStorage()->read();
-        if ($auth['rola'] != Application_Model_Uzytkownicy::ROLE_STUDENT) : ?>
+        if ($auth != null && $auth['rola'] != Application_Model_Uzytkownicy::ROLE_STUDENT) : ?>
         <li id="tasks">
             <h2>Zadania</h2>
             <ul>
                 <li><a href="/task/">Lista</a></li>
                 <li><a href="/task/add">Dodaj</a></li>
+            </ul>
+        </li>
+        <?php endif; ?>
+        <?php $auth = Zend_Auth::getInstance()->getStorage()->read();
+        if ($auth != null && $auth['rola'] != Application_Model_Uzytkownicy::ROLE_STUDENT) : ?>
+        <li id="tasks">
+            <h2>Lista Sprawdzonych</h2>
+            <ul>
+                <li><a href="/tests/points">Lista</a></li>
             </ul>
         </li>
         <?php endif; ?>

@@ -1,0 +1,19 @@
+<div class="post1">
+    <div class="title">
+        <h2>Lista Testów</h2>
+    </div>
+
+    <p> <?php echo $this->paginationControl($this->tests, 'Sliding', 'paginator/paginator.phtml'); ?> </p>
+    <table class="standard">
+        <tr>
+            <th>Treść</th>
+            <th>Zdobyte punkty</th>
+        </tr>
+        <?php foreach ($this->tests as $test) : ?> 
+                <tr class="<?= $this->cycle(array("light", "dark"))->next() ?>">
+                    <td><?= substr($test['idTesty'], 0, 50); ?></td>
+                    <td><?= $test['zdobyte_punkty']; ?></td>
+                </tr>
+            <?php endforeach; ?>
+    </table>
+</div>

@@ -16,4 +16,15 @@ class Application_Model_RozwiazanieZadaniaTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Application_Model_RozwiazanieZadania');
     }
+    
+    public function findOneByIdzadaniaIdUser($idZadania, $idUser)
+    {
+        $query = Doctrine_Query::create()
+                ->from('Application_Model_RozwiazanieZadania')
+                ->andWhere('', $idZadania)
+                ->andWhere('Uzytkownicy_idUzytkownicy = ?', $idUser);
+        
+        return $query->fetchOne();
+        
+    }
 }

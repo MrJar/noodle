@@ -12,6 +12,10 @@
  */
 class Noodle_Ideone_Api extends Noodle_Ideone_Api_Base {
     
+    const RESULT_STATUS = 15;
+
+    const LANGUAGE_ID_C = 11;
+
     public function __construct() {
         $config = Zend_Registry::get('config');
         
