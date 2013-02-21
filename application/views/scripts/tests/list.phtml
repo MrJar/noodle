@@ -1,21 +1,42 @@
-<table>
-<?php foreach ($this->tests as $test) : ?>
+<div class="post1">
+    <div class="title">
+        <h2>Lista testów i Akcje</h2>
+
+    </div>
+
+    <p> <?php echo $this->paginationControl($this->paginator, 'Sliding', 'paginator/paginator.phtml'); ?> </p>
+    <table class="standard">
         <tr>
-            <td>
-                <?= $test->Nazwa_testu ?>
-            </td>
-            <td>
-                <?= $test->data_od ?>
-            </td>
-            <td>
-                <?= $test->data_do ?>
-            </td>
-            <td>
-                <?= $test->getPrzedmiotNameById()->nazwa; ?>
-            </td>
-            <td>
-                <a href="/tests/edit/?id=<?= $test->idTesty ?>">Edytuj</a>
-            </td>
+            <th>Nazwa testu</th>
+            <th>data_od</th>
+            <th>data_do</th>
+            <th colspan="1">Akcje</th>
         </tr>
-<?php endforeach; ?>
-</table>
+
+        <?php foreach ($this->paginator as $value) : ?>
+            <tr class="<?php echo $this->cycle(array("light", "dark"))->next() ?>">
+
+                <td><?= $value['Nazwa_testu']; ?></td>
+                <td><?= $value['data_od']; ?></td>
+                <td><?= $value['data_do']; ?></td>
+                <td id="akcje"><a href="/tests/edit/?id=<?= $value['idTesty'] ?>">Edytuj</a></td>
+                
+            </tr>
+        <?php endforeach; ?>
+    </table>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

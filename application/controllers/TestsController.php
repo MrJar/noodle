@@ -27,7 +27,14 @@ class TestsController extends Noodle_Controller_Action
     
     public function listAction()
     {
-        $this->view->tests = Application_Model_TestyTable::getInstance()->findAll();
+           $testTable = Application_Model_TestyTable::getInstance();
+        $test = $testTable->findAll();
+        $adapter=$test->toArray();
+        $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Array($adapter));
+        $paginator->setItemCountPerPage(10);
+        $page = $this->_request->getParam('strona', 1);
+        $paginator->setCurrentPageNumber($page);
+        $this->view->paginator = $paginator;
     }
     
     public function pointsAction()
